@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
-import axios from 'axios';
 import './App.css';
+import Login from './containers/Login';
 
 class App extends Component {
   // Initialize state
   state = {}
-
-  componentDidMount() {
-    axios.get('/api/example').then((res) => {
-        console.log(res);
-    }).catch((e) => {
-        console.log(e);
-    })
-  }
 
   render() {
 
@@ -21,7 +13,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' render={() => (
-            <div>Root page route</div>
+            <Login/>
           )}/>
           <Route path='/test' render={() => (
             <div>test route one</div>
