@@ -1,3 +1,4 @@
+require('./db/mongoose');
 const express = require('express');
 const exampleRouter = require('./routers/example');
 const path = require('path');
