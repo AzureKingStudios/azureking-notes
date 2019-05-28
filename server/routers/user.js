@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 const router = new express.Router();
 
 //This route is used to sign up new users
-router.post('/users', async (req, res) => {
+router.post('/api/users', async (req, res) => {
     const user = new User(req.body);
 
     try {
@@ -18,7 +18,7 @@ router.post('/users', async (req, res) => {
 });
 
 //This route is used to login in current users
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password);
         const token = await user.generateAuthToken();
@@ -31,7 +31,7 @@ router.post('/users/login', async (req, res) => {
 });
 
 //This route is to check the users profile
-router.get('/users/me', auth, async (req, res) => {
+router.get('/api/users/me', auth, async (req, res) => {
     try {
         const user = req.user;
         if(!user) {
@@ -44,7 +44,7 @@ router.get('/users/me', auth, async (req, res) => {
 });
 
 //This route is to logout the user from current session
-router.post('/users/logout', auth, async (req, res) => {
+router.post('/api/users/logout', auth, async (req, res) => {
     try {
         const user = req.user;
         user.tokens = user.tokens.filter((token) => {
@@ -60,7 +60,7 @@ router.post('/users/logout', auth, async (req, res) => {
 });
 
 //This route is to logout out the user from all sessions and remove all tokens
-router.post('/users/logoutall', auth, async (req, res) => {
+router.post('/api/users/logoutall', auth, async (req, res) => {
     try {
         const user = req.user;
         user.tokens = [];
@@ -72,7 +72,7 @@ router.post('/users/logoutall', auth, async (req, res) => {
 })
 
 //This route is used to delete the current user if authorized
-router.delete('/users', async (req,res) => {
+router.delete('/api/users', async (req,res) => {
     try {
         const user = await User.findOneAndRemove({userName: req.body.userName});
         if(!user) {
@@ -86,7 +86,7 @@ router.delete('/users', async (req,res) => {
 });
 
 //This route is used to update authorized users profile
-router.patch('/users', async (req, res) => {
+router.patch('/api/users', async (req, res) => {
    const updates = Object.keys(req.body);
    const allowedUpdates = ['userName', 'password', 'email'];
    const isValidOperation = updates.every((update) => {
