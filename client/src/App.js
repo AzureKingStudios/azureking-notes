@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import Login from './containers/Login';
+import Profile from './containers/Profile';
 
 class App extends Component {
   // Initialize state
@@ -17,6 +18,9 @@ class App extends Component {
           )}/>
           <Route path='/test' render={() => (
             <div>test route one</div>
+          )}/>
+          <Route path='/users/me' render={() => (
+            <Profile/>
           )}/>
           <Route render={() => (
             <div>404</div>
