@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
 class Login extends Component {
 
@@ -34,6 +35,7 @@ class Login extends Component {
   render() {
     return(
       <div>
+        <Header/>
         <div>Login page</div>
         <form onSubmit={this.handleSubmit}>
           email:

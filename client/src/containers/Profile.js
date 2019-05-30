@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Header from './Header';
 
 class Profile extends Component {
 
@@ -44,6 +45,7 @@ class Profile extends Component {
         }
         return(
             <div>
+                <Header/>
                 <h1>Profile page</h1>
                 <p>Joined: {this.state.user.createdAt}</p>
                 <p>Email: {this.state.user.email}</p>
