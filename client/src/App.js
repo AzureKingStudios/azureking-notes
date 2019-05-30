@@ -14,13 +14,16 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' render={() => (
-            <Login/>
+            <div>front root page</div>
           )}/>
           <Route path='/test' render={() => (
             <div>test route one</div>
           )}/>
           <Route path='/users/me' render={() => (
             <Profile/>
+          )}/>
+          <Route path='/users/login' render={() => (
+            <Login/>
           )}/>
           <Route render={() => (
             <div>404</div>
