@@ -14,17 +14,11 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' render={(props) => (
-            <NotesPage {...props}/>
-          )}/>
+          <Route exact path='/' component={NotesPage}/>
+          <Route path='/users/me' component={ProfilePage}/>
+          <Route path='/users/login' component={LoginPage}/>
           <Route path='/test' render={() => (
             <div>test route one</div>
-          )}/>
-          <Route path='/users/me' render={() => (
-            <ProfilePage/>
-          )}/>
-          <Route path='/users/login' render={() => (
-            <LoginPage/>
           )}/>
           <Route render={() => (
             <div>404</div>
