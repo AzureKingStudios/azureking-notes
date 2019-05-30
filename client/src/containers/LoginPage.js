@@ -26,10 +26,21 @@ class LoginPage extends Component {
       }).then((res) => {
           console.log(res.data.token);
           localStorage.setItem('aks-tk', res.data.token);
+          this.setState({
+            email: '',
+            password: ''
+          });
+          this.props.history.push(`/`);
       }).catch((e) => {
           console.log(e);
           alert('wrong email or password');
       });
+  }
+
+  componentDidMount() {
+    if(localStorage.getItem('aks-tk')) {
+      this.props.history.push(`/`);
+    }
   }
 
   render() {
