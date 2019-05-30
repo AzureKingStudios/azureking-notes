@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
 
-class Login extends Component {
+class LoginPage extends Component {
 
   state = {
     email: '',
@@ -49,4 +49,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default LoginPage;

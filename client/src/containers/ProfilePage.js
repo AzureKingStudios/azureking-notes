@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Header from './Header';
 
-class Profile extends Component {
+class ProfilePage extends Component {
 
     state = {
         user: {}
@@ -55,4 +55,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default ProfilePage;
