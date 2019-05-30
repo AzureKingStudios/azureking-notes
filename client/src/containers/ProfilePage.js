@@ -8,10 +8,28 @@ class ProfilePage extends Component {
         user: {}
     }
 
+    handleClick = () => {
+        console.log('everything deleted');
+        let axiosConfig = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('aks-tk')
+            }
+        }
+
+        axios.post('/api/users/logoutall', {}, axiosConfig).then(() => {
+            console.log('logged out all tokens')
+            localStorage.removeItem('aks-tk');
+            this.props.history.push(`/users/login`);
+        }).catch((e) => {
+            console.log(e);
+        })
+    }
+
     componentDidMount() {
 
         if(localStorage.getItem('aks-tk') === null) {
-            console.log('token null')
+            console.log('token null');
+            this.props.history.push(`/users/login`);
             return;
         }
         console.log(localStorage.getItem('aks-tk'));
@@ -40,16 +58,20 @@ class ProfilePage extends Component {
             console.log('state called');
 
             return(
-                <div>no user info here</div>
+                <div>
+                    <Header/>
+                    <div>no user info here</div>
+                </div>
             )
         }
         return(
             <div>
-                <Header/>
+                <Header {...this.props}/>
                 <h1>Profile page</h1>
                 <p>Joined: {this.state.user.createdAt}</p>
                 <p>Email: {this.state.user.email}</p>
                 <p>User Name: {this.state.user.userName}</p>
+                <button onClick={this.handleClick}>Logout all</button>
             </div>
         )
     }
