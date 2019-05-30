@@ -23,11 +23,13 @@ class Login extends Component {
         email: this.state.email,
         password: this.state.password
       }).then((res) => {
-          console.log(res)
+          console.log(res.data.token);
+          localStorage.setItem('aks-tk', res.data.token);
       }).catch((e) => {
           console.log(e);
           alert('wrong email or password');
       });
+
   }
 
   render() {
