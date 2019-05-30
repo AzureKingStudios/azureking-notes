@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
-import Login from './containers/Login';
+import LoginPage from './containers/LoginPage';
+import ProfilePage from './containers/ProfilePage';
+import NotesPage from './containers/NotesPage';
 
 class App extends Component {
   // Initialize state
@@ -12,11 +14,17 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' render={() => (
-            <Login/>
+          <Route exact path='/' render={(props) => (
+            <NotesPage {...props}/>
           )}/>
           <Route path='/test' render={() => (
             <div>test route one</div>
+          )}/>
+          <Route path='/users/me' render={() => (
+            <ProfilePage/>
+          )}/>
+          <Route path='/users/login' render={() => (
+            <LoginPage/>
           )}/>
           <Route render={() => (
             <div>404</div>

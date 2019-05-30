@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
-class Login extends Component {
+class LoginPage extends Component {
 
   state = {
     email: '',
@@ -23,7 +24,8 @@ class Login extends Component {
         email: this.state.email,
         password: this.state.password
       }).then((res) => {
-          console.log(res)
+          console.log(res.data.token);
+          localStorage.setItem('aks-tk', res.data.token);
       }).catch((e) => {
           console.log(e);
           alert('wrong email or password');
@@ -33,6 +35,7 @@ class Login extends Component {
   render() {
     return(
       <div>
+        <Header/>
         <div>Login page</div>
         <form onSubmit={this.handleSubmit}>
           email:
@@ -46,4 +49,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default LoginPage;
