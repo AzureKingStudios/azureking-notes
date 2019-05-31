@@ -13,7 +13,7 @@ class NotesPage extends Component {
     render() {
         return(
             <div>
-                <Header/>
+                <Header {...this.props}/>
                 <div>Notes Page</div>
             </div>
         )
