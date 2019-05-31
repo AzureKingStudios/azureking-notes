@@ -13,6 +13,10 @@ const noteSchema = new mongoose.Schema({
         type: String,
         trim: true,
         default: 'white'
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
 }, {
     timestamps: true
