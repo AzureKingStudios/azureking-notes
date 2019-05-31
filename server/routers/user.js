@@ -73,6 +73,7 @@ router.post('/api/users/logoutall', auth, async (req, res) => {
 //This route is used to delete the current user if authorized
 router.delete('/api/users', async (req,res) => {
     try {
+        //todo: change find from username to id
         const user = await User.findOneAndRemove({userName: req.body.userName});
         if(!user) {
             throw new Error();
