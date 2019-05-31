@@ -31,4 +31,14 @@ router.get('/api/notes/:id', auth, async (req, res) => {
     }
 });
 
+//retrieve all notes
+router.get('/api/notes', auth, async (req, res)=>{
+    try {
+        const notes = await Note.find({owner: req.user._id})
+        res.status(200).send(notes);
+    } catch(e) {
+        res.status(400).send();
+    }
+});
+
 module.exports = router;
