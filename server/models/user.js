@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Note = require('./note');
 
 const userSchema = new mongoose.Schema({
     userName: {
@@ -77,7 +78,13 @@ userSchema.pre('save', async function(next) {
     }
 
     next();
-})
+});
+
+userSchema.pre('remove', async function(next) {
+    const user = this;
+    await Note.deleteMany({owner: user._id});
+    next();
+});
 
 const User = mongoose.model('User', userSchema);
 
