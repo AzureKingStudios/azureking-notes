@@ -44,6 +44,10 @@ userSchema.methods.toJSON = function() {
 userSchema.methods.generateAuthToken = async function() {
     const user = this;
     const token = jwt.sign({_id: user._id.toString()}, process.env.JWT_SECRET);
+    //if the number of tokens is greater than 4 one is removed so that 5 is the max number of tokens
+    if(user.tokens.length >= 5) {
+        user.tokens.splice(0,1);
+    }
     user.tokens = user.tokens.concat({token});
     await user.save();
 
@@ -52,15 +56,12 @@ userSchema.methods.generateAuthToken = async function() {
 
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({email});
-    // console.log('first',user)
-    // console.log('password', password)
 
     if(!user) {
         throw new Error('Unable to login');
     }
     
     const isMatch = await bcrypt.compare(password, user.password);
-    // console.log('ismatch', isMatch)
     
     if(!isMatch) {
         throw new Error('Unable to login');
