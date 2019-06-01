@@ -40,3 +40,9 @@
 .header-title {
   margin-top: 0px;
 }
+
+.single-note {
+  border: 2px solid orangered;
+  width: 200px;
+  margin: 10px;
+}
