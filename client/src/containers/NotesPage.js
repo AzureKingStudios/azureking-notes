@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-import React, {Component} from 'react';
-import Header from './Header';
-
-class NotesPage extends Component {
-
-    componentDidMount() {
-        if(!localStorage.getItem('aks-tk')) {
-            console.log('notes mounted')
-            this.props.history.push(`/users/login`);
-        }
-    }
-
-    render() {
-        return(
-            <div>
-                <Header {...this.props}/>
-                <div>Notes Page</div>
-            </div>
-        )
-    }
-}
-
-export default NotesPage;
-||||||| merged common ancestors
-=======
 import React, {Component} from 'react';
 import Header from './Header';
 import Note from './Note';
@@ -73,4 +47,3 @@ class NotesPage extends Component {
 }
 
 export default NotesPage;
->>>>>>> header
