@@ -36,7 +36,7 @@ class NotesPage extends Component {
             <div>
                 <Header {...this.props}/>
                 <div>Notes Page</div>
-                <div>
+                <div className='notes-grid'>
                     {notes.map((note) => (
                     <Note key={note._id} note={note}/>
                     ))}

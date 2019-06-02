@@ -5,8 +5,8 @@ class Note extends Component {
         const note = this.props.note;
         return(
             <div className='single-note'>
-                <h2>{note.title}</h2>
-                <p>{note.body}</p>
+                <p className='note-title'>{note.title}</p>
+                <p className='note-body'>{note.body}</p>
             </div>
         )
     }
