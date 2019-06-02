@@ -70,40 +70,42 @@ router.post('/api/users/logoutall', auth, async (req, res) => {
     }
 })
 
-//This route is used to delete the current user if authorized
-router.delete('/api/users', async (req,res) => {
+//This route is used to update authorized users profile
+router.patch('/api/users', auth, async (req, res) => {
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['userName', 'password', 'email'];
+    const isValidOperation = updates.every((update) => {
+        return allowedUpdates.includes(update);
+    });
+    
+    if(!isValidOperation) {
+        return res.status(400).send({error: "Invalid updates!"});
+    }
+    
     try {
-        const user = await User.findOneAndRemove({userName: req.body.userName});
+        const user = await User.findOne({userName: req.body.userName});
+        updates.forEach(update => user[update] = req.body[update]);
+        await user.save();
+        res.status(200).send(user);
+    } catch(e) {
+        res.status(400).send();
+    }
+});
+
+//This route is used to delete the current user if authorized
+router.delete('/api/users', auth, async (req,res) => {
+    try {
+        //todo: change find from username to id
+        const user = await User.findOne({userName: req.body.userName});
         if(!user) {
             throw new Error();
         }
+        await user.remove();
         res.status(200).send(user);
     } catch(e) {
         res.status(400).send();
     }
 
-});
-
-//This route is used to update authorized users profile
-router.patch('/api/users', async (req, res) => {
-   const updates = Object.keys(req.body);
-   const allowedUpdates = ['userName', 'password', 'email'];
-   const isValidOperation = updates.every((update) => {
-       return allowedUpdates.includes(update);
-   });
-
-   if(!isValidOperation) {
-       return res.status(400).send({error: "Invalid updates!"});
-   }
-
-   try {
-       const user = await User.findOne({userName: req.body.userName});
-       updates.forEach(update => user[update] = req.body[update]);
-       await user.save();
-       res.status(200).send(user);
-   } catch(e) {
-       res.status(400).send();
-   }
 });
 
 module.exports = router;
