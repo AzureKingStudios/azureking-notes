@@ -30,17 +30,20 @@ class Header extends Component {
 
   render() {
     return(
-      <div className='notes-header'>
-        <h1 className='header-title' onClick={this.homeClick}>AzureKing Notes</h1>
+      <header className='notes-header'>
+          <div className='title-container'>
+            <img className='header-logo' src="https://placeimg.com/640/480/tech" alt='azure king studios logo'></img>
+            <h1 className='header-title' onClick={this.homeClick}>AzureKing Notes</h1>
+          </div>
         {localStorage.getItem('aks-tk') 
         && (
-            <div>
-                <button onClick={this.handleLogout}>sign out</button>
-                <button onClick={this.profileClick}>Profile</button>
+            <div className='header-buttons-container'>
+                <button className='header-button' onClick={this.handleLogout}>Sign Out</button>
+                <button className='header-button' onClick={this.profileClick}>Profile</button>
             </div>
         )}
         
-      </div>
+      </header>
     )
   }
 }
