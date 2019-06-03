@@ -4,7 +4,7 @@ class NoteModal extends Component {
 
     render() {
         return(
-            <div className='note-modal'></div>
+            <div className='note-modal' onClick={this.props.modalSwitch}></div>
         )
     }
 }
