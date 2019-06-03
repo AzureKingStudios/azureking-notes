@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import Note from './Note';
+import NewNote from './NewNote';
 import axios from 'axios';
 
 class NotesPage extends Component {
@@ -41,6 +42,7 @@ class NotesPage extends Component {
                     <Note key={note._id} note={note}/>
                     ))}
                 </div>
+                <NewNote/>
             </div>
         )
     }

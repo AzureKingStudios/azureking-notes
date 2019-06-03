@@ -31,18 +31,6 @@
     transform: rotate(360deg);
   }
 }
-<<<<<<< HEAD
-
-.notes-header {
-  background-color: #FFC133;
-  border-bottom: 3px solid #CCD1D1;
-}
-
-.header-title {
-  margin-top: 0px;
-}
-||||||| merged common ancestors
-=======
 
 .notes-header {
   background-color: #FFC133;
@@ -61,6 +49,7 @@
 
 .title-container {
   width: 60%;
+  float: left;
 }
 
 .header-buttons-container {
@@ -110,4 +99,16 @@
   word-break: break-all;
   margin: 10px;
 }
->>>>>>> header
+
+.new-note {
+  width:60px;
+  height: 60px;
+  border-radius: 30px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 2;
+  cursor: pointer;
+  background-color: #FFC133;
+  color: white;
+}
