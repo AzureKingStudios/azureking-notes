@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Note from './Note';
 import NewNote from './NewNote';
+import NoteModal from './NoteModal';
 import axios from 'axios';
 
 class NotesPage extends Component {
 
     state = {
-        notes: []
+        notes: [],
+        modalVisible: false
     }
 
     componentDidMount() {
@@ -28,7 +30,13 @@ class NotesPage extends Component {
             console.log(this.state.notes);
         }).catch((e) => {
             console.log(e);
-        })
+        });
+    }
+
+    modalSwitch = () => {
+        this.setState((prevState) => ({
+            modalVisible: !prevState.modalVisible
+        }))
     }
 
     render() {
@@ -42,7 +50,10 @@ class NotesPage extends Component {
                     <Note key={note._id} note={note}/>
                     ))}
                 </div>
-                <NewNote/>
+                <NewNote modalSwitch={this.modalSwitch}/>
+                {this.state.modalVisible && 
+                <NoteModal modalSwitch={this.modalSwitch}/>
+                }
             </div>
         )
     }
