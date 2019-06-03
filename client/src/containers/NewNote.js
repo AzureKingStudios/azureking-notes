@@ -4,6 +4,7 @@ class NewNote extends Component {
 
     handleClick = () => {
         console.log('new note clicked');
+        this.props.modalSwitch();
     }
 
     render(){
