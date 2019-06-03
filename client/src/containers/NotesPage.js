@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Note from './Note';
 import NewNote from './NewNote';
+import NoteModal from './NoteModal';
 import axios from 'axios';
 
 class NotesPage extends Component {
@@ -43,6 +44,7 @@ class NotesPage extends Component {
                     ))}
                 </div>
                 <NewNote/>
+                <NoteModal/>
             </div>
         )
     }
