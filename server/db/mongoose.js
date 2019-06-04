@@ -5,3 +5,5 @@ mongoose.connect(process.env.MONGODB_URL, {
     useCreateIndex: true,
     useFindAndModify: false
 });
+
+//todo: add catch to connect

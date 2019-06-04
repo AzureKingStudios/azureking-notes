@@ -33,10 +33,10 @@ class NotesPage extends Component {
         });
     }
 
-    modalSwitch = () => {
+    modalSwitch = (event) => {
         this.setState((prevState) => ({
             modalVisible: !prevState.modalVisible
-        }))
+        }));
     }
 
     render() {

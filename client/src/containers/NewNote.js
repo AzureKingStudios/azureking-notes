@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 
 class NewNote extends Component {
 
-    handleClick = () => {
-        console.log('new note clicked');
-        this.props.modalSwitch();
+    handleClick = (event) => {
+        this.props.modalSwitch(event);
     }
 
     render(){
         return(
-            <button className='new-note' onClick={this.handleClick}>New Note</button>
+            <button className='new-note' onClick={(event) => this.handleClick(event)}>New Note</button>
         )
     }
 }
