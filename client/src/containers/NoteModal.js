@@ -11,7 +11,7 @@ class NoteModal extends Component {
     handleClick = (event) => {
         console.log(event.target.className);
         if(event.target.className === 'note-modal') {
-            this.props.modalSwitch()
+            this.props.modalSwitch();
         }
     }
 
@@ -21,33 +21,37 @@ class NoteModal extends Component {
     }
     
     handleChangeBody = (event) => {
-        console.log(event.currentTarget.textContent)
         this.setState({bodyValue: event.target.value});
     }
 
     handleSave = () => {
         const note = {
-            title: this.state.titleValue,
-            body: this.state.bodyValue
+            title: this.state.titleValue.trim(),
+            body: this.state.bodyValue.trim()
+        }
+
+        if(note.title === '' && note.body === ''){
+            this.props.modalSwitch();
+            return;
         }
 
         this.addNote(note);
     }
-
+    
     addNote = (note) => {
         let axiosConfig = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('aks-tk')
             }
         }
-
+        
         axios.post('/api/notes',note,axiosConfig).then((res) => {
-            console.log(this.state.notes);
             this.setState({notes: res.data});
-            console.log(this.state.notes);
             this.props.getNotes();
+            this.props.modalSwitch();
         }).catch((e) => {
             console.log(e);
+            this.props.modalSwitch();
         });
     }
 
@@ -55,12 +59,6 @@ class NoteModal extends Component {
         return(
             <div className='note-modal' onClick={(event) => this.handleClick(event)}>
                 <div className='note-modal-content'>
-                    {/* <div 
-                    contentEditable 
-                    className='note-input'
-                    onInput={event => {this.handleChangeTitle(event)}}
-                    >{this.state.titleValue}</div>
-                    <div contentEditable className='note-input'></div> */}
                     <textarea 
                     className='note-input-title'
                     value={this.state.titleValue}
@@ -69,12 +67,9 @@ class NoteModal extends Component {
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
-                    <button>Cancel</button>
+                    <button onClick={this.props.modalSwitch}>Cancel</button>
                     <button onClick={this.handleSave}>Save</button>
                 </div>
-                {/* <form className='note-modal-form'>
-                    <input className='note-input'></input>
-                </form> */}
             </div>
         )
     }
