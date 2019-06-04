@@ -132,10 +132,15 @@
   padding: 10px;
 }
 
-.note-input {
+.note-input-title {
+  width: 600px;
+}
+
+.note-input-body {
   width: 600px;
   /* margin-left: calc(50% - 250px); */
   text-align: left;
+  height: 400px;
 }
 
 div[contenteditable] {
