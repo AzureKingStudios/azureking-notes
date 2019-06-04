@@ -13,6 +13,10 @@ class NotesPage extends Component {
     }
 
     componentDidMount() {
+       this.getNotes();
+    }
+
+    getNotes = () => {
         if(!localStorage.getItem('aks-tk')) {
             console.log('notes mounted')
             this.props.history.push(`/users/login`);
@@ -52,7 +56,7 @@ class NotesPage extends Component {
                 </div>
                 <NewNote modalSwitch={this.modalSwitch}/>
                 {this.state.modalVisible && 
-                <NoteModal modalSwitch={this.modalSwitch}/>
+                <NoteModal getNotes={this.getNotes} modalSwitch={this.modalSwitch}/>
                 }
             </div>
         )
