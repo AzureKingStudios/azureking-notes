@@ -5,14 +5,8 @@ class NoteModal extends Component {
 
     state = {
         titleValue: '',
-        bodyValue: ''
-    }
-
-    handleClick = (event) => {
-        console.log(event.target.className);
-        if(event.target.className === 'note-modal') {
-            this.props.modalSwitch();
-        }
+        bodyValue: '',
+        note: {}
     }
 
     handleChangeTitle = (event) => {
@@ -22,6 +16,13 @@ class NoteModal extends Component {
     
     handleChangeBody = (event) => {
         this.setState({bodyValue: event.target.value});
+    }
+    
+    handleClick = (event) => {
+        console.log(event.target.className);
+        if(event.target.className === 'note-modal') {
+            this.props.modalSwitch();
+        }
     }
 
     handleSave = () => {
@@ -53,6 +54,36 @@ class NoteModal extends Component {
             console.log(e);
             this.props.modalSwitch();
         });
+    }
+
+    updateNote = (note) => {
+        let axiosConfig = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('aks-tk')
+            }
+        }
+        
+        axios.post('/api/notes',note,axiosConfig).then((res) => {
+            this.setState({notes: res.data});
+            this.props.getNotes();
+            this.props.modalSwitch();
+        }).catch((e) => {
+            console.log(e);
+            this.props.modalSwitch();
+        });
+    }
+
+    componentDidMount() {
+        console.log(this.props.currentNote.title);
+        this.setState({
+            titleValue:this.props.currentNote.title,
+            bodyValue: this.props.currentNote.body
+        });
+        // if(Object.keys(this.props.currentNote).length >= 1){
+        //     // console.log(Object.keys(this.props.currentNote).length)
+        //     title = this.props.currentNote.title;
+        //     body = this.props.currentNote.body;
+        // }
     }
 
     render() {

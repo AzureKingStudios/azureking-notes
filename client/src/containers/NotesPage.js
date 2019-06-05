@@ -9,11 +9,18 @@ class NotesPage extends Component {
 
     state = {
         notes: [],
-        modalVisible: false
+        modalVisible: false,
+        currentNote: {}
     }
 
     componentDidMount() {
        this.getNotes();
+    }
+
+    setCurrentNote = (newNote) => {
+        this.setState({currentNote: newNote}, function() {
+            this.modalSwitch();
+        });
     }
 
     getNotes = () => {
@@ -51,12 +58,12 @@ class NotesPage extends Component {
                 <div>Notes Page</div>
                 <div className='notes-grid'>
                     {notes.map((note) => (
-                    <Note key={note._id} note={note}/>
+                    <Note setCurrentNote={this.setCurrentNote} key={note._id} note={note}/>
                     ))}
                 </div>
                 <NewNote modalSwitch={this.modalSwitch}/>
                 {this.state.modalVisible && 
-                <NoteModal getNotes={this.getNotes} modalSwitch={this.modalSwitch}/>
+                <NoteModal currentNote={this.state.currentNote} getNotes={this.getNotes} modalSwitch={this.modalSwitch}/>
                 }
             </div>
         )
