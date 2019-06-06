@@ -5,14 +5,8 @@ class NoteModal extends Component {
 
     state = {
         titleValue: '',
-        bodyValue: ''
-    }
-
-    handleClick = (event) => {
-        console.log(event.target.className);
-        if(event.target.className === 'note-modal') {
-            this.props.modalSwitch()
-        }
+        bodyValue: '',
+        note: {}
     }
 
     handleChangeTitle = (event) => {
@@ -21,46 +15,81 @@ class NoteModal extends Component {
     }
     
     handleChangeBody = (event) => {
-        console.log(event.currentTarget.textContent)
         this.setState({bodyValue: event.target.value});
+    }
+    
+    handleClick = (event) => {
+        console.log(event.target.className);
+        if(event.target.className === 'note-modal') {
+            this.props.modalSwitch();
+        }
     }
 
     handleSave = () => {
         const note = {
-            title: this.state.titleValue,
-            body: this.state.bodyValue
+            title: this.state.titleValue.trim(),
+            body: this.state.bodyValue.trim()
+        }
+
+        if(note.title === '' && note.body === ''){
+            this.props.modalSwitch();
+            return;
         }
 
         this.addNote(note);
     }
-
+    
     addNote = (note) => {
         let axiosConfig = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('aks-tk')
             }
         }
-
+        
         axios.post('/api/notes',note,axiosConfig).then((res) => {
-            console.log(this.state.notes);
             this.setState({notes: res.data});
-            console.log(this.state.notes);
             this.props.getNotes();
+            this.props.modalSwitch();
         }).catch((e) => {
             console.log(e);
+            this.props.modalSwitch();
         });
+    }
+
+    updateNote = (note) => {
+        let axiosConfig = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('aks-tk')
+            }
+        }
+        
+        axios.post('/api/notes',note,axiosConfig).then((res) => {
+            this.setState({notes: res.data});
+            this.props.getNotes();
+            this.props.modalSwitch();
+        }).catch((e) => {
+            console.log(e);
+            this.props.modalSwitch();
+        });
+    }
+
+    componentDidMount() {
+        console.log(this.props.currentNote.title);
+        this.setState({
+            titleValue:this.props.currentNote.title,
+            bodyValue: this.props.currentNote.body
+        });
+        // if(Object.keys(this.props.currentNote).length >= 1){
+        //     // console.log(Object.keys(this.props.currentNote).length)
+        //     title = this.props.currentNote.title;
+        //     body = this.props.currentNote.body;
+        // }
     }
 
     render() {
         return(
             <div className='note-modal' onClick={(event) => this.handleClick(event)}>
                 <div className='note-modal-content'>
-                    {/* <div 
-                    contentEditable 
-                    className='note-input'
-                    onInput={event => {this.handleChangeTitle(event)}}
-                    >{this.state.titleValue}</div>
-                    <div contentEditable className='note-input'></div> */}
                     <textarea 
                     className='note-input-title'
                     value={this.state.titleValue}
@@ -69,12 +98,9 @@ class NoteModal extends Component {
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
-                    <button>Cancel</button>
+                    <button onClick={this.props.modalSwitch}>Cancel</button>
                     <button onClick={this.handleSave}>Save</button>
                 </div>
-                {/* <form className='note-modal-form'>
-                    <input className='note-input'></input>
-                </form> */}
             </div>
         )
     }
