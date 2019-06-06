@@ -30,9 +30,15 @@ class NoteModal extends Component {
             title: this.state.titleValue.trim(),
             body: this.state.bodyValue.trim()
         }
-
+        
         if(note.title === '' && note.body === ''){
             this.props.modalSwitch();
+            return;
+        }
+        
+        if(Object.keys(this.props.currentNote).length >= 1){
+            console.log('new note being updated')
+            this.updateNote(note);
             return;
         }
 
@@ -47,7 +53,7 @@ class NoteModal extends Component {
         }
         
         axios.post('/api/notes',note,axiosConfig).then((res) => {
-            this.setState({notes: res.data});
+            // this.setState({notes: res.data});
             this.props.getNotes();
             this.props.modalSwitch();
         }).catch((e) => {
@@ -63,8 +69,8 @@ class NoteModal extends Component {
             }
         }
         
-        axios.post('/api/notes',note,axiosConfig).then((res) => {
-            this.setState({notes: res.data});
+        axios.patch(`/api/notes/${this.props.currentNote._id}`,note,axiosConfig).then((res) => {
+            // this.setState({notes: res.data});
             this.props.getNotes();
             this.props.modalSwitch();
         }).catch((e) => {
@@ -74,7 +80,7 @@ class NoteModal extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.currentNote.title);
+        console.log(this.props.currentNote._id);
         this.setState({
             titleValue:this.props.currentNote.title,
             bodyValue: this.props.currentNote.body

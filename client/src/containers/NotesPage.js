@@ -61,7 +61,7 @@ class NotesPage extends Component {
                     <Note setCurrentNote={this.setCurrentNote} key={note._id} note={note}/>
                     ))}
                 </div>
-                <NewNote modalSwitch={this.modalSwitch}/>
+                <NewNote setCurrentNote={this.setCurrentNote}/>
                 {this.state.modalVisible && 
                 <NoteModal currentNote={this.state.currentNote} getNotes={this.getNotes} modalSwitch={this.modalSwitch}/>
                 }

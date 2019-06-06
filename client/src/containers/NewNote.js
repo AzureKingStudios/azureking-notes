@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class NewNote extends Component {
 
     handleClick = (event) => {
-        this.props.modalSwitch(event);
+        this.props.setCurrentNote({});
     }
 
     render(){
