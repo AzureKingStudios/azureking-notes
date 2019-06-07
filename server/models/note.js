@@ -14,6 +14,14 @@ const noteSchema = new mongoose.Schema({
         trim: true,
         default: 'white'
     },
+    pinned: {
+        type: Boolean,
+        default: false
+    },
+    archived: {
+        type: Boolean,
+        default: false
+    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
