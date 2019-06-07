@@ -127,6 +127,18 @@
   width: 600px;
 }
 
+.modal-btn-container {
+  height: 20px;
+}
+
+.modal-btn {
+  float: right;
+}
+
+.delete-btn {
+  float: left;
+}
+
 /* Single Note */
 .single-note {
   border: 2px solid orangered;

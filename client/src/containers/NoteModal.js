@@ -62,6 +62,23 @@ class NoteModal extends Component {
         });
     }
 
+    deleteNote = () => {
+        let axiosConfig = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('aks-tk')
+            }
+        }
+        
+        axios.delete(`/api/notes/${this.props.currentNote._id}`,axiosConfig).then((res) => {
+            // this.setState({notes: res.data});
+            this.props.getNotes();
+            this.props.modalSwitch();
+        }).catch((e) => {
+            console.log(e);
+            this.props.modalSwitch();
+        });
+    }
+
     updateNote = (note) => {
         let axiosConfig = {
             headers: {
@@ -104,8 +121,11 @@ class NoteModal extends Component {
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
-                    <button onClick={this.props.modalSwitch}>Cancel</button>
-                    <button onClick={this.handleSave}>Save</button>
+                    <div className='modal-btn-container'>
+                        <button className='delete-btn' onClick={this.deleteNote}>Delete</button>
+                        <button className='modal-btn' onClick={this.handleSave}>Save</button>
+                        <button className='modal-btn' onClick={this.props.modalSwitch}>Cancel</button>
+                    </div>
                 </div>
             </div>
         )
