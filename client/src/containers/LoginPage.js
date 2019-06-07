@@ -46,7 +46,7 @@ class LoginPage extends Component {
   render() {
     return(
       <div>
-        <Header/>
+        <Header {...this.props}/>
         <div>Login page</div>
         <form onSubmit={this.handleSubmit}>
           email:

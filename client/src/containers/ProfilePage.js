@@ -59,7 +59,7 @@ class ProfilePage extends Component {
 
             return(
                 <div>
-                    <Header/>
+                    <Header {...this.props}/>
                     <div>no user info here</div>
                 </div>
             )
