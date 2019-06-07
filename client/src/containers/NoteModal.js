@@ -30,8 +30,14 @@ class NoteModal extends Component {
             title: this.state.titleValue.trim(),
             body: this.state.bodyValue.trim()
         }
+
+        const noteIsSame = (note.title === this.props.currentNote.title 
+                                && note.body === this.props.currentNote.body);
+
+        const noteIsEmpty = (note.title === '' && note.body === '')
         
-        if(note.title === '' && note.body === ''){
+        //prevents empty note or a note that hasnt changed from being saved
+        if( noteIsEmpty || noteIsSame){
             this.props.modalSwitch();
             return;
         }

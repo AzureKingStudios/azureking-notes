@@ -32,7 +32,7 @@ class Header extends Component {
     return(
       <header className='notes-header'>
           <div className='title-container'>
-            <img className='header-logo' src="https://placeimg.com/640/480/tech" alt='azure king studios logo'></img>
+            <img className='header-logo' onClick={this.homeClick} src="https://placeimg.com/640/480/tech" alt='azure king studios logo'></img>
             <h1 className='header-title' onClick={this.homeClick}>AzureKing Notes</h1>
           </div>
         {localStorage.getItem('aks-tk') 

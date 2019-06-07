@@ -44,6 +44,7 @@
   margin-top: 5px;
   color: white;
   float: left;
+  cursor: pointer;
 }
 
 .title-container {
@@ -64,7 +65,8 @@
   margin: 5px;
   background-color: white;
   float: right;
-  border: none;
+  border: 3px solid #DCDCDC;
+  cursor: pointer;
 }
 
 .header-logo {
@@ -73,6 +75,7 @@
   margin: 5px 20px 0px 30px;
   border-radius: 24px;
   float: left;
+  cursor: pointer;
 }
 
 /* Notes Page */
@@ -116,28 +119,45 @@
   margin-top: 150px;
   margin-left: calc(50% - 300px);
   padding: 10px;
+  border-radius: 15px;
 }
 
 .note-input-body {
-  width: 600px;
-  text-align: left;
+  /* width: 595px; */
   height: 400px;
+  /* border-radius: 15px; */
 }
 
-.note-input-title {
-  width: 600px;
+.note-input-title, .note-input-body {
+  text-align: left;
+  width: 588px;
+  border-radius: 15px;
+  padding: 5px;
 }
 
 .modal-btn-container {
   height: 20px;
+  width: 600px;
 }
 
 .modal-btn {
   float: right;
+  border: 2px solid green;
+  color: green;
+  background-color: white;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .delete-btn {
   float: left;
+  border-radius: 15px;
+  border: 2px solid red;
+  color: red;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* Single Note */
@@ -150,6 +170,7 @@
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
 }
 
 .note-title {
