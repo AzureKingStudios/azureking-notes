@@ -16,7 +16,7 @@ app.get('*', (req, res) => {
     // const index = path.join(__dirname, 'build', 'index.html');
     // res.sendFile(index);
     if(process.env.NODE_ENV === 'production') {
-        res.sendFile(path.join(__dirname+'../client/build/index.html'));
+        res.sendFile(path.join(__dirname+'/../client/build/index.html'));
     } else {
         res.sendFile(path.join(__dirname+'/client/build/index.html'));
     }
