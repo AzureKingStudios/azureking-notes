@@ -17,7 +17,8 @@ app.get('*', (req, res) => {
     // res.sendFile(index);
     if(process.env.NODE_ENV === 'production') {
         res.sendFile(path.join('/app/client/build/index.html'));
-        console.log('production server called');
+        
+        console.log('production server called', __dirname);
     } else {
         res.sendFile(path.join(__dirname+'/client/build/index.html'));
     }
