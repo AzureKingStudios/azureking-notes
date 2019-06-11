@@ -211,7 +211,8 @@
 }
 
 .note-body, .note-title {
-  word-break: break-all;
+  /* word-break: break-all; */
+  overflow-wrap: break-word;
   margin: 10px;
   white-space: pre-wrap;
   text-align: left;
