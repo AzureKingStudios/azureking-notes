@@ -9,7 +9,7 @@ class ProfilePage extends Component {
     }
 
     handleClick = () => {
-        console.log('everything deleted');
+        console.log('every token removed');
         let axiosConfig = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('aks-tk')
@@ -18,11 +18,11 @@ class ProfilePage extends Component {
 
         axios.post('/api/users/logoutall', {}, axiosConfig).then(() => {
             console.log('logged out all tokens')
-            localStorage.removeItem('aks-tk');
-            this.props.history.push(`/users/login`);
         }).catch((e) => {
             console.log(e);
         })
+        localStorage.removeItem('aks-tk');
+        this.props.history.push(`/users/login`);
     }
 
     componentDidMount() {
@@ -45,6 +45,11 @@ class ProfilePage extends Component {
             this.setState({user: res.data});
         }).catch((e) => {
             console.log(e);
+            if(e.response.status === 401) {
+                console.log('token erased')
+                localStorage.removeItem('aks-tk');
+                this.props.history.push(`/users/login`);
+            }
         })
     }
 

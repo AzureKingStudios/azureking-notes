@@ -163,7 +163,7 @@
 /* Single Note */
 .single-note {
   border: 2px solid #DCDCDC;
-  width: 22.4%;
+  width: calc(25% - 26px);
   margin: 10px;
   max-height: 225px;
   min-height: 110px;

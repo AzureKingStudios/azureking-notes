@@ -12,11 +12,11 @@ class Header extends Component {
         }
 
         axios.post('/api/users/logout', {}, axiosConfig).then(() => {
-            localStorage.removeItem('aks-tk');
-            this.props.history.push(`/users/login`);
+          this.props.history.push(`/users/login`);
         }).catch((e) => {
-            console.log(e);
+          console.log(e);
         })
+        localStorage.removeItem('aks-tk');
     }
 
     profileClick = () => {
