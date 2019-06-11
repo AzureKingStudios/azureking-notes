@@ -13,7 +13,9 @@ app.use(userRouter);
 app.use(noteRouter);
 app.use(exampleRouter);
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+    const index = path.join(__dirname, 'build', 'index.html');
+    res.sendFile(index);
+    // res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 module.exports = app;
