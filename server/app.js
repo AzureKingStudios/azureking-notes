@@ -15,7 +15,11 @@ app.use(exampleRouter);
 app.get('*', (req, res) => {
     // const index = path.join(__dirname, 'build', 'index.html');
     // res.sendFile(index);
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+    if(process.env.NODE_ENV === 'production') {
+        res.sendFile(path.join(__dirname+'../client/build/index.html'));
+    } else {
+        res.sendFile(path.join(__dirname+'/client/build/index.html'));
+    }
 });
 
 module.exports = app;
