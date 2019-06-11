@@ -32,7 +32,7 @@
   }
 }
 
-/* Header */
+/* ================== Header ============================ */
 .notes-header {
   background-color: #FF8C00;
   border-bottom: 3px solid #DCDCDC;
@@ -42,6 +42,7 @@
 
 .header-title {
   margin-top: 5px;
+  font-size: 16px;
   color: white;
   float: left;
   cursor: pointer;
@@ -55,7 +56,7 @@
 .header-buttons-container {
   float: right;
   margin: 0px 10px 0px 0px;
-  width: 30%;
+  width: 120px;
 }
 
 .header-button {
@@ -72,13 +73,24 @@
 .header-logo {
   width: 50px;
   height: 50px;
-  margin: 5px 20px 0px 30px;
+  margin-top: 5px;
   border-radius: 24px;
   float: left;
   cursor: pointer;
 }
 
-/* Notes Page */
+@media screen and (min-width: 900px) {
+  .header-title {
+    font-size: 32px;
+  }
+  
+  .header-logo {
+    
+    margin: 5px 20px 0px 30px;
+  }
+}
+
+/* ===================== Notes Page ====================== */
 
 .notes-grid {
   display: flex;
@@ -92,15 +104,22 @@
   height: 60px;
   border-radius: 30px;
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 20px;
+  right: 20px;
   z-index: 1;
   cursor: pointer;
   background-color: #FF8C00;
   color: white;
 }
 
-/* Note Modal */
+@media screen and (min-width: 900px) {
+  .new-note {
+    bottom: 40px;
+    right: 50px;
+  }
+}
+
+/* ====================== Note Modal ========================== */
 
 .note-modal {
   background-color: rgb(0,0,0,0.6);
@@ -115,29 +134,30 @@
 
 .note-modal-content {
   background-color: white;
-  width: 600px;
+  width: 80%;
   margin-top: 150px;
-  margin-left: calc(50% - 300px);
+  /* margin-left: calc(50% - 300px); */
+  margin-left: 8%;
   padding: 10px;
   border-radius: 15px;
 }
 
 .note-input-body {
   /* width: 595px; */
-  height: 400px;
+  height: 200px;
   /* border-radius: 15px; */
 }
 
 .note-input-title, .note-input-body {
   text-align: left;
-  width: 588px;
+  width: calc(100% - 20px);
   border-radius: 15px;
   padding: 5px;
 }
 
 .modal-btn-container {
   height: 20px;
-  width: 600px;
+  width: 100%;
 }
 
 .modal-btn {
@@ -160,10 +180,23 @@
   cursor: pointer;
 }
 
-/* Single Note */
+@media screen and (min-width: 900px) {
+  .note-modal-content {
+    width: 600px;
+    margin-left: calc(50% - 300px);
+  }
+
+  .note-input-body {
+    /* width: 595px; */
+    height: 400px;
+    /* border-radius: 15px; */
+  }
+}
+
+/* ======================== Single Note ========================= */
 .single-note {
   border: 2px solid #DCDCDC;
-  width: calc(25% - 26px);
+  width: calc(50% - 26px);
   margin: 10px;
   max-height: 225px;
   min-height: 110px;
@@ -182,4 +215,10 @@
   margin: 10px;
   white-space: pre-wrap;
   text-align: left;
+}
+
+@media screen and (min-width: 900px) {
+  .single-note {
+    width: calc(25% - 26px);
+  }
 }
