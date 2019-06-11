@@ -5,8 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js",
-    "dev": "env-cmd nodemon server/index.js",
+    "start": "node index.js",
+    "dev": "env-cmd nodemon index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "azurekingstudios",
