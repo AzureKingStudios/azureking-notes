@@ -41,8 +41,8 @@
 }
 
 .header-title {
-  margin-top: 5px;
-  font-size: 16px;
+  margin-top: 13px;
+  font-size: 20px;
   color: white;
   float: left;
   cursor: pointer;
@@ -82,6 +82,7 @@
 @media screen and (min-width: 900px) {
   .header-title {
     font-size: 32px;
+    margin-top: 5px;
   }
   
   .header-logo {
@@ -130,12 +131,13 @@
   height: 100%;
   display: block;
   z-index: 10;
+  overflow: auto;
 }
 
 .note-modal-content {
   background-color: white;
   width: 80%;
-  margin-top: 150px;
+  margin-top: 24px;
   /* margin-left: calc(50% - 300px); */
   margin-left: 8%;
   padding: 10px;
@@ -145,6 +147,7 @@
 .note-input-body {
   /* width: 595px; */
   height: 200px;
+  overflow: auto;
   /* border-radius: 15px; */
 }
 
@@ -188,7 +191,7 @@
 
   .note-input-body {
     /* width: 595px; */
-    height: 400px;
+    height: 300px;
     /* border-radius: 15px; */
   }
 }

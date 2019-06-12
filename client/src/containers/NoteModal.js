@@ -27,8 +27,9 @@ class NoteModal extends Component {
 
     handleSave = () => {
         const note = {
-            title: this.state.titleValue.trim(),
-            body: this.state.bodyValue.trim()
+            //ternary prevents trim from being called on an undefined value
+            title: this.state.titleValue === undefined ? '' : this.state.titleValue.trim(),
+            body: this.state.bodyValue === undefined ? '' : this.state.bodyValue.trim()
         }
 
         const noteIsSame = (note.title === this.props.currentNote.title 
