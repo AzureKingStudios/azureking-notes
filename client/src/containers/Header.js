@@ -39,7 +39,7 @@ class Header extends Component {
         && (
             <div className='header-buttons-container'>
                 <button className='header-button' onClick={this.handleLogout}>Sign Out</button>
-                <button className='header-button' onClick={this.profileClick}>Profile</button>
+                <button className='header-button' onClick={this.profileClick}>User</button>
             </div>
         )}
         
