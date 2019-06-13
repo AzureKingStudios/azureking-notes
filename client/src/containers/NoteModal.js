@@ -165,7 +165,9 @@ class NoteModal extends Component {
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
                     <div className='modal-btn-container'>
+                        {Object.keys(this.props.currentNote).length >= 1 && 
                         <button className='delete-btn' onClick={this.deleteNote}>Delete</button>
+                        }
                         <button className='modal-btn' onClick={this.handleSave}>Save</button>
                         <button className='modal-btn' onClick={this.props.modalSwitch}>Cancel</button>
                     </div>
