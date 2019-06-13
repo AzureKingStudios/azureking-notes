@@ -91,6 +91,19 @@ class NoteModal extends Component {
     }
 
     deleteNote = () => {
+
+        if(!localStorage.getItem('aks-tk')) {
+            let notes = JSON.parse(localStorage.getItem('notes'));
+            const id = notes.findIndex(i => i.id === this.props.currentNote.id);
+            notes.splice(id,1);
+            localStorage.setItem('notes',JSON.stringify(notes));
+            this.props.getNotes();
+            this.props.modalSwitch();
+            return;
+        }
+
+
+
         let axiosConfig = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('aks-tk')
