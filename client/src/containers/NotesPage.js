@@ -27,10 +27,12 @@ class NotesPage extends Component {
         if(!localStorage.getItem('aks-tk')) {
             console.log('notes mounted')
             // this.props.history.push(`/users/login`);
-            const localNotes = localStorage.getItem('notes');
+            const localNotes = JSON.parse(localStorage.getItem('notes'));
             this.setState({notes: localNotes ? localNotes : []}, function() {
                 console.log('not signed in', this.state.notes);
-            })
+            });
+
+            return;
         }
 
         let axiosConfig = {

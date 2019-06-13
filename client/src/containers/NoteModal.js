@@ -53,6 +53,27 @@ class NoteModal extends Component {
     }
     
     addNote = (note) => {
+
+        if(!localStorage.getItem('aks-tk')){
+
+            if(!localStorage.getItem('noteCount')){
+                localStorage.setItem('noteCount', '0');
+            }
+            let noteCount = JSON.parse(localStorage.getItem('noteCount'));
+            noteCount = noteCount+1;
+            localStorage.setItem('noteCount', JSON.stringify(noteCount));
+            note.id = noteCount;
+            note.color = 'white';
+
+            let notes = JSON.parse(localStorage.getItem('notes'));
+            notes = notes ? notes : [];
+            notes = notes.concat(note);
+            localStorage.setItem('notes',JSON.stringify(notes));
+            this.props.getNotes();
+            this.props.modalSwitch();
+            return;
+        }
+
         let axiosConfig = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('aks-tk')
