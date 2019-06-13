@@ -120,11 +120,13 @@ class NoteModal extends Component {
         return(
             <div className='note-modal' onClick={(event) => this.handleClick(event)}>
                 <div className='note-modal-content'>
-                    <textarea 
+                    <textarea
+                    maxLength='2000' 
                     className='note-input-title'
                     value={this.state.titleValue}
                     onChange={this.handleChangeTitle}></textarea>
                     <textarea 
+                    maxLength='2000' 
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
