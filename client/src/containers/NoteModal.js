@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {addNote} from '../utils/noteUtils';
 
 class NoteModal extends Component {
 
@@ -49,46 +50,46 @@ class NoteModal extends Component {
             return;
         }
 
-        this.addNote(note);
+        addNote(note,this.props);
     }
     
-    addNote = (note) => {
+    // addNote = (note) => {
 
-        if(!localStorage.getItem('aks-tk')){
+    //     if(!localStorage.getItem('aks-tk')){
 
-            if(!localStorage.getItem('noteCount')){
-                localStorage.setItem('noteCount', '0');
-            }
-            let noteCount = JSON.parse(localStorage.getItem('noteCount'));
-            noteCount = noteCount+1;
-            localStorage.setItem('noteCount', JSON.stringify(noteCount));
-            note.id = noteCount;
-            note.color = 'white';
+    //         if(!localStorage.getItem('noteCount')){
+    //             localStorage.setItem('noteCount', '0');
+    //         }
+    //         let noteCount = JSON.parse(localStorage.getItem('noteCount'));
+    //         noteCount = noteCount+1;
+    //         localStorage.setItem('noteCount', JSON.stringify(noteCount));
+    //         note.id = noteCount;
+    //         note.color = 'white';
 
-            let notes = JSON.parse(localStorage.getItem('notes'));
-            notes = notes ? notes : [];
-            notes = notes.concat(note);
-            localStorage.setItem('notes',JSON.stringify(notes));
-            this.props.getNotes();
-            this.props.modalSwitch();
-            return;
-        }
+    //         let notes = JSON.parse(localStorage.getItem('notes'));
+    //         notes = notes ? notes : [];
+    //         notes = notes.concat(note);
+    //         localStorage.setItem('notes',JSON.stringify(notes));
+    //         this.props.getNotes();
+    //         this.props.modalSwitch();
+    //         return;
+    //     }
 
-        let axiosConfig = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('aks-tk')
-            }
-        }
+    //     let axiosConfig = {
+    //         headers: {
+    //             Authorization: "Bearer " + localStorage.getItem('aks-tk')
+    //         }
+    //     }
         
-        axios.post('/api/notes',note,axiosConfig).then((res) => {
-            // this.setState({notes: res.data});
-            this.props.getNotes();
-            this.props.modalSwitch();
-        }).catch((e) => {
-            console.log(e);
-            this.props.modalSwitch();
-        });
-    }
+    //     axios.post('/api/notes',note,axiosConfig).then((res) => {
+    //         // this.setState({notes: res.data});
+    //         this.props.getNotes();
+    //         this.props.modalSwitch();
+    //     }).catch((e) => {
+    //         console.log(e);
+    //         this.props.modalSwitch();
+    //     });
+    // }
 
     deleteNote = () => {
 
