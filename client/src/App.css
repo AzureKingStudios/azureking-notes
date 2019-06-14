@@ -168,14 +168,15 @@
   border: 2px solid green;
   color: green;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .delete-btn {
   float: left;
-  border-radius: 15px;
+  border-radius: 5px;
   border: 2px solid red;
   color: red;
   background-color: white;

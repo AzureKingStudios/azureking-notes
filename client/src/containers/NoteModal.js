@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {addNote, deleteNote, updateNote} from '../utils/noteUtils';
 
 class NoteModal extends Component {
 
@@ -45,91 +46,38 @@ class NoteModal extends Component {
         
         if(Object.keys(this.props.currentNote).length >= 1){
             console.log('new note being updated')
-            this.updateNote(note);
+            updateNote(note, this.props);
             return;
         }
 
-        this.addNote(note);
+        addNote(note,this.props);
     }
     
-    addNote = (note) => {
-        let axiosConfig = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('aks-tk')
-            }
-        }
-        
-        axios.post('/api/notes',note,axiosConfig).then((res) => {
-            // this.setState({notes: res.data});
-            this.props.getNotes();
-            this.props.modalSwitch();
-        }).catch((e) => {
-            console.log(e);
-            this.props.modalSwitch();
-        });
-    }
-
-    deleteNote = () => {
-        let axiosConfig = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('aks-tk')
-            }
-        }
-        
-        axios.delete(`/api/notes/${this.props.currentNote._id}`,axiosConfig).then((res) => {
-            // this.setState({notes: res.data});
-            this.props.getNotes();
-            this.props.modalSwitch();
-        }).catch((e) => {
-            console.log(e);
-            this.props.modalSwitch();
-        });
-    }
-
-    updateNote = (note) => {
-        let axiosConfig = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('aks-tk')
-            }
-        }
-        
-        axios.patch(`/api/notes/${this.props.currentNote._id}`,note,axiosConfig).then((res) => {
-            // this.setState({notes: res.data});
-            this.props.getNotes();
-            this.props.modalSwitch();
-        }).catch((e) => {
-            console.log(e);
-            this.props.modalSwitch();
-        });
-    }
-
     componentDidMount() {
-        console.log(this.props.currentNote._id);
         this.setState({
             titleValue:this.props.currentNote.title,
             bodyValue: this.props.currentNote.body
         });
-        // if(Object.keys(this.props.currentNote).length >= 1){
-        //     // console.log(Object.keys(this.props.currentNote).length)
-        //     title = this.props.currentNote.title;
-        //     body = this.props.currentNote.body;
-        // }
     }
 
     render() {
         return(
             <div className='note-modal' onClick={(event) => this.handleClick(event)}>
                 <div className='note-modal-content'>
-                    <textarea 
+                    <textarea
+                    maxLength='2000' 
                     className='note-input-title'
                     value={this.state.titleValue}
                     onChange={this.handleChangeTitle}></textarea>
                     <textarea 
+                    maxLength='2000' 
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
                     <div className='modal-btn-container'>
-                        <button className='delete-btn' onClick={this.deleteNote}>Delete</button>
+                        {Object.keys(this.props.currentNote).length >= 1 && 
+                        <button className='delete-btn' onClick={()=>deleteNote(this.props)}>Delete</button>
+                        }
                         <button className='modal-btn' onClick={this.handleSave}>Save</button>
                         <button className='modal-btn' onClick={this.props.modalSwitch}>Cancel</button>
                     </div>

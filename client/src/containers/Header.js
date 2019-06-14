@@ -27,6 +27,10 @@ class Header extends Component {
         this.props.history.push('/');
     }
 
+    loginClick = () => {
+        this.props.history.push('/users/login');
+    }
+
 
   render() {
     return(
@@ -42,7 +46,12 @@ class Header extends Component {
                 <button className='header-button' onClick={this.profileClick}>User</button>
             </div>
         )}
-        
+        {!localStorage.getItem('aks-tk')
+        && (
+          <button className='header-button' onClick={this.loginClick}>login</button>
+        )
+
+        }
       </header>
     )
   }
