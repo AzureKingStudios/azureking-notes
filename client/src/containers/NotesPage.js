@@ -61,7 +61,6 @@ class NotesPage extends Component {
         return(
             <div>
                 <Header {...this.props}/>
-                <div>Notes Page</div>
                 <div className='notes-grid'>
                     {notes.map((note) => (
                     <Note setCurrentNote={this.setCurrentNote} key={note._id} note={note}/>
