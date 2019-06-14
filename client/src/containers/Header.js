@@ -48,7 +48,7 @@ class Header extends Component {
         )}
         {!localStorage.getItem('aks-tk')
         && (
-          <button className='header-button' onClick={this.loginClick}>login</button>
+          <button className='header-button' onClick={this.loginClick}>Sign In</button>
         )
 
         }
