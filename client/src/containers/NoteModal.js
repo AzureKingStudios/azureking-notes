@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {addNote, deleteNote} from '../utils/noteUtils';
+import {addNote, deleteNote, updateNote} from '../utils/noteUtils';
 
 class NoteModal extends Component {
 
@@ -46,121 +46,18 @@ class NoteModal extends Component {
         
         if(Object.keys(this.props.currentNote).length >= 1){
             console.log('new note being updated')
-            this.updateNote(note);
+            updateNote(note, this.props);
             return;
         }
 
         addNote(note,this.props);
     }
     
-    // addNote = (note) => {
-
-    //     if(!localStorage.getItem('aks-tk')){
-
-    //         if(!localStorage.getItem('noteCount')){
-    //             localStorage.setItem('noteCount', '0');
-    //         }
-    //         let noteCount = JSON.parse(localStorage.getItem('noteCount'));
-    //         noteCount = noteCount+1;
-    //         localStorage.setItem('noteCount', JSON.stringify(noteCount));
-    //         note.id = noteCount;
-    //         note.color = 'white';
-
-    //         let notes = JSON.parse(localStorage.getItem('notes'));
-    //         notes = notes ? notes : [];
-    //         notes = notes.concat(note);
-    //         localStorage.setItem('notes',JSON.stringify(notes));
-    //         this.props.getNotes();
-    //         this.props.modalSwitch();
-    //         return;
-    //     }
-
-    //     let axiosConfig = {
-    //         headers: {
-    //             Authorization: "Bearer " + localStorage.getItem('aks-tk')
-    //         }
-    //     }
-        
-    //     axios.post('/api/notes',note,axiosConfig).then((res) => {
-    //         // this.setState({notes: res.data});
-    //         this.props.getNotes();
-    //         this.props.modalSwitch();
-    //     }).catch((e) => {
-    //         console.log(e);
-    //         this.props.modalSwitch();
-    //     });
-    // }
-
-    // deleteNote = () => {
-
-    //     if(!localStorage.getItem('aks-tk')) {
-    //         let notes = JSON.parse(localStorage.getItem('notes'));
-    //         const id = notes.findIndex(i => i.id === this.props.currentNote.id);
-    //         notes.splice(id,1);
-    //         localStorage.setItem('notes',JSON.stringify(notes));
-    //         this.props.getNotes();
-    //         this.props.modalSwitch();
-    //         return;
-    //     }
-
-
-
-    //     let axiosConfig = {
-    //         headers: {
-    //             Authorization: "Bearer " + localStorage.getItem('aks-tk')
-    //         }
-    //     }
-        
-    //     axios.delete(`/api/notes/${this.props.currentNote._id}`,axiosConfig).then((res) => {
-    //         // this.setState({notes: res.data});
-    //         this.props.getNotes();
-    //         this.props.modalSwitch();
-    //     }).catch((e) => {
-    //         console.log(e);
-    //         this.props.modalSwitch();
-    //     });
-    // }
-
-    updateNote = (note) => {
-
-        if(!localStorage.getItem('aks-tk')) {
-            let notes = JSON.parse(localStorage.getItem('notes'));
-            const id = notes.findIndex(i => i.id === this.props.currentNote.id);
-            notes[id].title = note.title;
-            notes[id].body = note.body;
-            localStorage.setItem('notes',JSON.stringify(notes));
-            this.props.getNotes();
-            this.props.modalSwitch();
-            return;
-        }
-
-        let axiosConfig = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('aks-tk')
-            }
-        }
-        
-        axios.patch(`/api/notes/${this.props.currentNote._id}`,note,axiosConfig).then((res) => {
-            // this.setState({notes: res.data});
-            this.props.getNotes();
-            this.props.modalSwitch();
-        }).catch((e) => {
-            console.log(e);
-            this.props.modalSwitch();
-        });
-    }
-
     componentDidMount() {
-        console.log(this.props.currentNote._id);
         this.setState({
             titleValue:this.props.currentNote.title,
             bodyValue: this.props.currentNote.body
         });
-        // if(Object.keys(this.props.currentNote).length >= 1){
-        //     // console.log(Object.keys(this.props.currentNote).length)
-        //     title = this.props.currentNote.title;
-        //     body = this.props.currentNote.body;
-        // }
     }
 
     render() {

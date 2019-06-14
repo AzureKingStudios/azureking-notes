@@ -68,15 +68,31 @@ export function addNote(note, props) {
         });
     }
 
-export function checkFunction() {
+    export function updateNote(note, props) {
 
-    console.log("function called");   
-}
+        if(!localStorage.getItem('aks-tk')) {
+            let notes = JSON.parse(localStorage.getItem('notes'));
+            const id = notes.findIndex(i => i.id === props.currentNote.id);
+            notes[id].title = note.title;
+            notes[id].body = note.body;
+            localStorage.setItem('notes',JSON.stringify(notes));
+            props.getNotes();
+            props.modalSwitch();
+            return;
+        }
 
-    // let checkFunction = () => {
-    // }
-
-    // module.exports = {
-    //     // addNote,
-    //     checkFunction
-    // };
+        let axiosConfig = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('aks-tk')
+            }
+        }
+        
+        axios.patch(`/api/notes/${props.currentNote._id}`,note,axiosConfig).then((res) => {
+            // this.setState({notes: res.data});
+            props.getNotes();
+            props.modalSwitch();
+        }).catch((e) => {
+            console.log(e);
+            props.modalSwitch();
+        });
+    }
