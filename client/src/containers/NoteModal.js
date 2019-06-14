@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {addNote} from '../utils/noteUtils';
+import {addNote, deleteNote} from '../utils/noteUtils';
 
 class NoteModal extends Component {
 
@@ -91,35 +91,35 @@ class NoteModal extends Component {
     //     });
     // }
 
-    deleteNote = () => {
+    // deleteNote = () => {
 
-        if(!localStorage.getItem('aks-tk')) {
-            let notes = JSON.parse(localStorage.getItem('notes'));
-            const id = notes.findIndex(i => i.id === this.props.currentNote.id);
-            notes.splice(id,1);
-            localStorage.setItem('notes',JSON.stringify(notes));
-            this.props.getNotes();
-            this.props.modalSwitch();
-            return;
-        }
+    //     if(!localStorage.getItem('aks-tk')) {
+    //         let notes = JSON.parse(localStorage.getItem('notes'));
+    //         const id = notes.findIndex(i => i.id === this.props.currentNote.id);
+    //         notes.splice(id,1);
+    //         localStorage.setItem('notes',JSON.stringify(notes));
+    //         this.props.getNotes();
+    //         this.props.modalSwitch();
+    //         return;
+    //     }
 
 
 
-        let axiosConfig = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('aks-tk')
-            }
-        }
+    //     let axiosConfig = {
+    //         headers: {
+    //             Authorization: "Bearer " + localStorage.getItem('aks-tk')
+    //         }
+    //     }
         
-        axios.delete(`/api/notes/${this.props.currentNote._id}`,axiosConfig).then((res) => {
-            // this.setState({notes: res.data});
-            this.props.getNotes();
-            this.props.modalSwitch();
-        }).catch((e) => {
-            console.log(e);
-            this.props.modalSwitch();
-        });
-    }
+    //     axios.delete(`/api/notes/${this.props.currentNote._id}`,axiosConfig).then((res) => {
+    //         // this.setState({notes: res.data});
+    //         this.props.getNotes();
+    //         this.props.modalSwitch();
+    //     }).catch((e) => {
+    //         console.log(e);
+    //         this.props.modalSwitch();
+    //     });
+    // }
 
     updateNote = (note) => {
 
@@ -179,7 +179,7 @@ class NoteModal extends Component {
                     onChange={this.handleChangeBody}></textarea>
                     <div className='modal-btn-container'>
                         {Object.keys(this.props.currentNote).length >= 1 && 
-                        <button className='delete-btn' onClick={this.deleteNote}>Delete</button>
+                        <button className='delete-btn' onClick={()=>deleteNote(this.props)}>Delete</button>
                         }
                         <button className='modal-btn' onClick={this.handleSave}>Save</button>
                         <button className='modal-btn' onClick={this.props.modalSwitch}>Cancel</button>

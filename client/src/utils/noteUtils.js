@@ -38,6 +38,36 @@ export function addNote(note, props) {
         });
     }
 
+    export function deleteNote(props) {
+
+        if(!localStorage.getItem('aks-tk')) {
+            let notes = JSON.parse(localStorage.getItem('notes'));
+            const id = notes.findIndex(i => i.id === props.currentNote.id);
+            notes.splice(id,1);
+            localStorage.setItem('notes',JSON.stringify(notes));
+            props.getNotes();
+            props.modalSwitch();
+            return;
+        }
+
+
+
+        let axiosConfig = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('aks-tk')
+            }
+        }
+        
+        axios.delete(`/api/notes/${props.currentNote._id}`,axiosConfig).then((res) => {
+            // this.setState({notes: res.data});
+            props.getNotes();
+            props.modalSwitch();
+        }).catch((e) => {
+            console.log(e);
+            props.modalSwitch();
+        });
+    }
+
 export function checkFunction() {
 
     console.log("function called");   
