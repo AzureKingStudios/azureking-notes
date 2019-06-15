@@ -37,7 +37,7 @@ class Header extends Component {
       <header className='notes-header'>
           <div className='title-container'>
             <img className='header-logo' onClick={this.homeClick} src="https://placeimg.com/640/480/tech" alt='azure king studios logo'></img>
-            <h1 className='header-title' onClick={this.homeClick}>AK Notes</h1>
+            <h1 className='header-title' onClick={this.homeClick}>AKS Notes</h1>
           </div>
           <div className='header-buttons-container'>
             {localStorage.getItem('aks-tk') 
@@ -45,7 +45,7 @@ class Header extends Component {
                 <button className='header-button' onClick={this.handleLogout}>Sign Out</button>
                 )}
             <button className='header-button' onClick={this.profileClick}>
-              <img className='sign-in-img' src='/img/user1.png'/>
+              <img className='sign-in-img' src='/img/user1.png' alt='user icon'/>
             </button>
           </div>
         {/* {!localStorage.getItem('aks-tk')
