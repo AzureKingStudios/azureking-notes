@@ -37,7 +37,7 @@ class Header extends Component {
       <header className='notes-header'>
           <div className='title-container'>
             <img className='header-logo' onClick={this.homeClick} src="https://placeimg.com/640/480/tech" alt='azure king studios logo'></img>
-            <h1 className='header-title' onClick={this.homeClick}>AzureKing Notes</h1>
+            <h1 className='header-title' onClick={this.homeClick}>AK Notes</h1>
           </div>
           <div className='header-buttons-container'>
             {localStorage.getItem('aks-tk') 
