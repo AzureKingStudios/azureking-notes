@@ -43,7 +43,9 @@ class Header extends Component {
         && (
             <div className='header-buttons-container'>
                 <button className='header-button' onClick={this.handleLogout}>Sign Out</button>
-                <button className='header-button' onClick={this.profileClick}>User</button>
+                <button className='header-button' onClick={this.profileClick}>
+                  <img className='sign-in-img' src='/img/user1.png'/>
+                </button>
             </div>
         )}
         {!localStorage.getItem('aks-tk')
@@ -52,6 +54,7 @@ class Header extends Component {
         )
 
         }
+        
       </header>
     )
   }

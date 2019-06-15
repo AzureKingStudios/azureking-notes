@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {addNote, deleteNote, updateNote} from '../utils/noteUtils';
 
 class NoteModal extends Component {
