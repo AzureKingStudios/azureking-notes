@@ -227,6 +227,12 @@
   text-align: left;
 }
 
+@media screen and (min-width: 600px) {
+  .single-note {
+    width: calc(33% - 22px);
+  }
+}
+
 @media screen and (min-width: 900px) {
   .single-note {
     width: calc(25% - 26px);
