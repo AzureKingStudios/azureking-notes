@@ -147,12 +147,12 @@
   margin-left: 8%;
   padding: 10px;
   border-radius: 15px;
-  height: calc(50% - 12px);
+  height: calc(95% - 12px);
 }
 
 .note-input-body {
   /* width: 595px; */
-  height: 70%;
+  height: 85%;
   overflow: auto;
   /* border-radius: 15px; */
 }
@@ -165,7 +165,7 @@
 }
 
 .modal-btn-container {
-  height: 10%;
+  height: 5%;
   width: 100%;
 }
 
