@@ -61,11 +61,11 @@ class NotesPage extends Component {
         return(
             <div>
                 <Header {...this.props}/>
-                <div className='notes-grid'>
+                <ul className='notes-grid'>
                     {notes.map((note) => (
                     <Note setCurrentNote={this.setCurrentNote} key={note._id} note={note}/>
                     ))}
-                </div>
+                </ul>
                 <NewNote setCurrentNote={this.setCurrentNote}/>
                 {this.state.modalVisible && 
                 <NoteModal currentNote={this.state.currentNote} getNotes={this.getNotes} modalSwitch={this.modalSwitch}/>
