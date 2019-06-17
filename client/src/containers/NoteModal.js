@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {addNote, deleteNote, updateNote} from '../utils/noteUtils';
+import {addNote, updateNote} from '../utils/noteUtils';
 import ModalButtons from './ModalButtons';
 
 class NoteModal extends Component {
@@ -74,7 +74,7 @@ class NoteModal extends Component {
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
-                    <ModalButtons/>
+                    <ModalButtons {...this.props} handleSave={this.handleSave}/>
                 </div>
             </div>
         )
