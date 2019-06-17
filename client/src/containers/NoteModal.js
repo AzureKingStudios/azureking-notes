@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {addNote, deleteNote, updateNote} from '../utils/noteUtils';
+import ModalButtons from './ModalButtons';
 
 class NoteModal extends Component {
 
@@ -73,13 +74,7 @@ class NoteModal extends Component {
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
-                    <div className='modal-btn-container'>
-                        {Object.keys(this.props.currentNote).length >= 1 && 
-                        <button className='delete-btn' onClick={()=>deleteNote(this.props)}>Delete</button>
-                        }
-                        <button className='modal-btn' onClick={this.handleSave}>Save</button>
-                        <button className='modal-btn' onClick={this.props.modalSwitch}>Cancel</button>
-                    </div>
+                    <ModalButtons/>
                 </div>
             </div>
         )
