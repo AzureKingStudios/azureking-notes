@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
-import {addNote, updateNote} from '../utils/noteUtils';
 import ModalButtons from './ModalButtons';
 
 class NoteModal extends Component {
 
     state = {
         titleValue: '',
-        bodyValue: '',
-        note: {}
+        bodyValue: ''
     }
 
     handleChangeTitle = (event) => {
-        console.log(event.target.value);
         this.setState({titleValue: event.target.value});
     }
     
@@ -20,37 +17,10 @@ class NoteModal extends Component {
     }
     
     handleClick = (event) => {
-        console.log(event.target.className);
+        // console.log(event.target.className);
         if(event.target.className === 'note-modal') {
             this.props.modalSwitch();
         }
-    }
-
-    handleSave = () => {
-        const note = {
-            //ternary prevents trim from being called on an undefined value
-            title: this.state.titleValue === undefined ? '' : this.state.titleValue.trim(),
-            body: this.state.bodyValue === undefined ? '' : this.state.bodyValue.trim()
-        }
-
-        const noteIsSame = (note.title === this.props.currentNote.title 
-                                && note.body === this.props.currentNote.body);
-
-        const noteIsEmpty = (note.title === '' && note.body === '')
-        
-        //prevents empty note or a note that hasnt changed from being saved
-        if( noteIsEmpty || noteIsSame){
-            this.props.modalSwitch();
-            return;
-        }
-        
-        if(Object.keys(this.props.currentNote).length >= 1){
-            console.log('new note being updated')
-            updateNote(note, this.props);
-            return;
-        }
-
-        addNote(note,this.props);
     }
     
     componentDidMount() {
@@ -74,7 +44,11 @@ class NoteModal extends Component {
                     className='note-input-body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
-                    <ModalButtons {...this.props} handleSave={this.handleSave}/>
+                    <ModalButtons 
+                    {...this.props} 
+                    titleValue={this.state.titleValue}
+                    bodyValue={this.state.bodyValue}
+                    />
                 </div>
             </div>
         )
