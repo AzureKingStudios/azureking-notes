@@ -259,11 +259,11 @@ body {
   border: 5px solid #00bfff;
   border-bottom: 5px solid #ffd000;
   border-radius: 35px;
-  animation: spin 2s linear infinite;
+  animation: loader-spin 2s linear infinite;
   margin: calc(25% - 25px) 0px 0px calc(50% - 25px);
 }
 
-@keyframes spin {
+@keyframes loader-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
