@@ -3,14 +3,16 @@ import Header from './Header';
 import Note from './Note';
 import NewNote from './NewNote';
 import NoteModal from './NoteModal';
+import Loader from './Loader';
 import axios from 'axios';
 
 class NotesPage extends Component {
 
     state = {
         notes: [],
-        modalVisible: false,
-        currentNote: {}
+        modalIsVisible: false,
+        currentIsNote: {},
+        loaderIsVisible: false
     }
 
     componentDidMount() {
@@ -52,8 +54,18 @@ class NotesPage extends Component {
 
     modalSwitch = (event) => {
         this.setState((prevState) => ({
-            modalVisible: !prevState.modalVisible
+            modalIsVisible: !prevState.modalIsVisible
         }));
+    }
+    
+    loaderOff = () => {
+        this.setState({loaderIsVisible: false});
+        console.log('loader off');
+    }
+
+    loaderOn = () => {
+        console.log('loader on');
+        this.setState({loaderIsVisible: true});
     }
 
     render() {
@@ -67,8 +79,17 @@ class NotesPage extends Component {
                     ))}
                 </ul>
                 <NewNote setCurrentNote={this.setCurrentNote}/>
-                {this.state.modalVisible && 
-                <NoteModal currentNote={this.state.currentNote} getNotes={this.getNotes} modalSwitch={this.modalSwitch}/>
+                {this.state.modalIsVisible && 
+                    <NoteModal 
+                        currentNote={this.state.currentNote} 
+                        getNotes={this.getNotes} 
+                        modalSwitch={this.modalSwitch}
+                        loaderOn={this.loaderOn}
+                        loaderOff={this.loaderOff}
+                    />
+                }
+                {this.state.loaderIsVisible &&
+                    <Loader/>
                 }
             </div>
         )

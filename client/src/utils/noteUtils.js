@@ -28,6 +28,7 @@ export function handleSave(titleValue, bodyValue, props) {
 }
 
 function addNote(note, props) {
+        props.loaderOn();
 
         if(!localStorage.getItem('aks-tk')){
 
@@ -59,13 +60,17 @@ function addNote(note, props) {
             // this.setState({notes: res.data});
             props.getNotes();
             props.modalSwitch();
+            props.loaderOff();
         }).catch((e) => {
             console.log(e);
             props.modalSwitch();
+            props.loaderOff();
         });
     }
 
 export function deleteNote(props) {
+
+    props.loaderOn();
 
     if(!localStorage.getItem('aks-tk')) {
         let notes = JSON.parse(localStorage.getItem('notes'));
@@ -89,13 +94,17 @@ export function deleteNote(props) {
         // this.setState({notes: res.data});
         props.getNotes();
         props.modalSwitch();
+        props.loaderOff();
     }).catch((e) => {
         console.log(e);
         props.modalSwitch();
+        props.loaderOff();
     });
 }
 
 function updateNote(note, props) {
+
+    props.loaderOn();
 
     if(!localStorage.getItem('aks-tk')) {
         let notes = JSON.parse(localStorage.getItem('notes'));
@@ -118,8 +127,10 @@ function updateNote(note, props) {
         // this.setState({notes: res.data});
         props.getNotes();
         props.modalSwitch();
+        props.loaderOff();
     }).catch((e) => {
         console.log(e);
         props.modalSwitch();
+        props.loaderOff();
     });
 }
