@@ -44,7 +44,7 @@ router.get('/api/notes', auth, async (req, res)=>{
 //update a note
 router.patch('/api/notes/:id',auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ['body', 'title'];
+    const allowedUpdates = ['body', 'title', 'color'];
     const isValidOperation = updates.every((update) => {
         return allowedUpdates.includes(update);
     });

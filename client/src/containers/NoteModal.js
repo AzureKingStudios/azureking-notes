@@ -5,7 +5,8 @@ class NoteModal extends Component {
 
     state = {
         titleValue: '',
-        bodyValue: ''
+        bodyValue: '',
+        color: ''
     }
 
     handleChangeTitle = (event) => {
@@ -14,6 +15,12 @@ class NoteModal extends Component {
     
     handleChangeBody = (event) => {
         this.setState({bodyValue: event.target.value});
+    }
+
+    changeColor = (newColor) => {
+        this.setState({color: newColor}, () => {
+            console.log(this.state.color);
+        })
     }
     
     handleClick = (event) => {
@@ -26,11 +33,19 @@ class NoteModal extends Component {
     componentDidMount() {
         this.setState({
             titleValue:this.props.currentNote.title,
-            bodyValue: this.props.currentNote.body
+            bodyValue: this.props.currentNote.body,
+            color: this.props.currentNote.color
         });
     }
 
     render() {
+
+        const noteValue = {
+            title: this.state.titleValue,
+            body: this.state.bodyValue,
+            color: this.state.color
+        }
+
         return(
             <div className='note-modal' onClick={(event) => this.handleClick(event)}>
                 <div className='note-modal-content'>
@@ -46,8 +61,8 @@ class NoteModal extends Component {
                     onChange={this.handleChangeBody}></textarea>
                     <ModalButtons 
                     {...this.props} 
-                    titleValue={this.state.titleValue}
-                    bodyValue={this.state.bodyValue}
+                    noteValue={noteValue}
+                    changeColor={this.changeColor}
                     />
                 </div>
             </div>

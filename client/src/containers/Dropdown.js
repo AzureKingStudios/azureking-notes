@@ -8,14 +8,20 @@ class Dropdown extends Component {
 
     handleClick = () => {
         console.log('color btn clicked');
+        this.props.changeColor('yellow');
+        this.toggleMenu();
+    }
+    
+    toggleMenu = () => {
         this.setState((prevState) => ({
             menuIsShown: !prevState.menuIsShown
         }));
     }
+
     render(){
         return(
             <div className="dropdown-container">
-                <button className='modal-btn' onClick={this.handleClick}>Color</button>
+                <button className='modal-btn' onClick={this.toggleMenu}>Color</button>
                 {this.state.menuIsShown && 
                 <div className='color-swatches'>
                     <button className='color-btn' style={{backgroundColor: "white"}} onClick={this.handleClick}></button>

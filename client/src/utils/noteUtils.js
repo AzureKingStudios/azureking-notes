@@ -4,11 +4,13 @@ export function handleSave(noteValue, props) {
     const note = {
         //ternary prevents trim from being called on an undefined value
         title: noteValue.title === undefined ? '' : noteValue.title.trim(),
-        body: noteValue.body === undefined ? '' : noteValue.body.trim()
+        body: noteValue.body === undefined ? '' : noteValue.body.trim(),
+        color: noteValue.color
     }
 
     const noteIsSame = (note.title === props.currentNote.title 
-                            && note.body === props.currentNote.body);
+                            && note.body === props.currentNote.body
+                            && note.color === props.currentNote.color);
 
     const noteIsEmpty = (note.title === '' && note.body === '')
     

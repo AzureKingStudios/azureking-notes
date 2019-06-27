@@ -5,14 +5,18 @@ class Note extends Component {
     getNoteColor = (noteColor) => {
         let color ='';
 
-        if(noteColor === 'red') {
-            color = 'red';
-        } else if(noteColor === 'blue') {
-            color = 'blue';
-        } else if(noteColor === 'yellow') {
-            color = 'yellow';
-        } else {
-            color = 'white';
+        switch(noteColor) {
+            case 'red':
+                color = 'red';
+                break;
+            case 'blue':
+                color = 'blue';
+                break;
+            case 'yellow':
+                color = 'yellow';
+                break;
+            default: 
+                color = 'white';
         }
 
         return color;
