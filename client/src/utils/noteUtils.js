@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export function handleSave(titleValue, bodyValue, props) {
+export function handleSave(noteValue, props) {
     const note = {
         //ternary prevents trim from being called on an undefined value
-        title: titleValue === undefined ? '' : titleValue.trim(),
-        body: bodyValue === undefined ? '' : bodyValue.trim()
+        title: noteValue.title === undefined ? '' : noteValue.title.trim(),
+        body: noteValue.body === undefined ? '' : noteValue.body.trim()
     }
 
     const noteIsSame = (note.title === props.currentNote.title 
