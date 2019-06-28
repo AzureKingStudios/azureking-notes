@@ -136,3 +136,23 @@ function updateNote(note, props) {
         props.loaderOff();
     });
 }
+
+ export function getNoteColor(noteColor){
+    let color ='';
+
+    switch(noteColor) {
+        case 'red':
+            color = '#F5535E';
+            break;
+        case 'blue':
+            color = '#61dafb';
+            break;
+        case 'yellow':
+            color = '#ffd000';
+            break;
+        default: 
+            color = 'white';
+    }
+
+    return color;
+}

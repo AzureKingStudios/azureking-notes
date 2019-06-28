@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ModalButtons from './ModalButtons';
+import {getNoteColor} from '../utils/noteUtils';
 
 class NoteModal extends Component {
 
@@ -46,15 +47,19 @@ class NoteModal extends Component {
             color: this.state.color
         }
 
+        const noteColor = getNoteColor(noteValue.color);
+
         return(
             <div className='note-modal' onClick={(event) => this.handleClick(event)}>
-                <div className='note-modal-content'>
+                <div style={{backgroundColor: noteColor}} className='note-modal-content'>
                     <textarea
+                    style={{backgroundColor: noteColor}}
                     maxLength='2000' 
                     className='note-input-title'
                     value={this.state.titleValue}
                     onChange={this.handleChangeTitle}></textarea>
-                    <textarea 
+                    <textarea
+                    style={{backgroundColor: noteColor}} 
                     maxLength='2000' 
                     className='note-input-body'
                     value={this.state.bodyValue}
