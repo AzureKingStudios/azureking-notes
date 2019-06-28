@@ -25,9 +25,9 @@ class Dropdown extends Component {
                 {this.state.menuIsShown && 
                 <div className='color-swatches'>
                     <button className='color-btn' style={{backgroundColor: "white"}} onClick={() => this.handleClick('white')}></button>
-                    <button className='color-btn' style={{backgroundColor: "red"}} onClick={() => this.handleClick('red')}></button>
-                    <button className='color-btn' style={{backgroundColor: "blue"}} onClick={() => this.handleClick('blue')}></button>
-                    <button className='color-btn' style={{backgroundColor: "yellow"}} onClick={() => this.handleClick('yellow')}></button>
+                    <button className='color-btn' style={{backgroundColor: "#F5535E"}} onClick={() => this.handleClick('red')}></button>
+                    <button className='color-btn' style={{backgroundColor: "#61dafb"}} onClick={() => this.handleClick('blue')}></button>
+                    <button className='color-btn' style={{backgroundColor: "#ffd000"}} onClick={() => this.handleClick('yellow')}></button>
                 </div>
                 }
             </div>
