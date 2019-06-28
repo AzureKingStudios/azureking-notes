@@ -7,13 +7,13 @@ class Note extends Component {
 
         switch(noteColor) {
             case 'red':
-                color = 'red';
+                color = '#F5535E';
                 break;
             case 'blue':
-                color = 'blue';
+                color = '#61dafb';
                 break;
             case 'yellow':
-                color = 'yellow';
+                color = '#ffd000';
                 break;
             default: 
                 color = 'white';

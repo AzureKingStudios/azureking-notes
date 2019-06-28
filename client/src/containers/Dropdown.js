@@ -6,9 +6,9 @@ class Dropdown extends Component {
         menuIsShown: false
     }
 
-    handleClick = () => {
+    handleClick = (color) => {
         console.log('color btn clicked');
-        this.props.changeColor('yellow');
+        this.props.changeColor(color);
         this.toggleMenu();
     }
     
@@ -24,10 +24,10 @@ class Dropdown extends Component {
                 <button className='modal-btn' onClick={this.toggleMenu}>Color</button>
                 {this.state.menuIsShown && 
                 <div className='color-swatches'>
-                    <button className='color-btn' style={{backgroundColor: "white"}} onClick={this.handleClick}></button>
-                    <button className='color-btn' style={{backgroundColor: "red"}} onClick={this.handleClick}></button>
-                    <button className='color-btn' style={{backgroundColor: "blue"}} onClick={this.handleClick}></button>
-                    <button className='color-btn' style={{backgroundColor: "yellow"}} onClick={this.handleClick}></button>
+                    <button className='color-btn' style={{backgroundColor: "white"}} onClick={() => this.handleClick('white')}></button>
+                    <button className='color-btn' style={{backgroundColor: "red"}} onClick={() => this.handleClick('red')}></button>
+                    <button className='color-btn' style={{backgroundColor: "blue"}} onClick={() => this.handleClick('blue')}></button>
+                    <button className='color-btn' style={{backgroundColor: "yellow"}} onClick={() => this.handleClick('yellow')}></button>
                 </div>
                 }
             </div>
