@@ -44,13 +44,11 @@ class LoginPage extends Component {
     return(
       <div>
         <Header {...this.props}/>
-        <div>Login page</div>
-        <form onSubmit={this.handleSubmit}>
-          email:
-          <input type="text" value={this.state.email} onChange={this.handleChangeEmail} required />
-          password:
-          <input type="password" value={this.state.password} onChange={this.handleChangePassword} required />
-            <input type="submit" value="Submit" />
+        <form className='login' onSubmit={this.handleSubmit}>
+          <h3 className='login-title'>Login</h3>
+          <input placeholder='email' className='login-input' type="text" value={this.state.email} onChange={this.handleChangeEmail} required />
+          <input placeholder='password' className='login-input' type="password" value={this.state.password} onChange={this.handleChangePassword} required />
+          <input className='login-btn' type="submit" value="Sign In" />
         </form>
       </div>
     )
