@@ -323,6 +323,8 @@ body {
 .login-input {
   font-size: 24px;
   margin: 10px;
+  border-radius: 8px;
+  border: 2px solid #DCDCDC;
 }
 
 .login-btn {
