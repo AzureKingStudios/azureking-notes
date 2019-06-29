@@ -56,12 +56,14 @@ class NoteModal extends Component {
                     style={{backgroundColor: noteColor}}
                     maxLength='2000' 
                     className='note-input-title'
+                    placeholder='Note Title'
                     value={this.state.titleValue}
                     onChange={this.handleChangeTitle}></textarea>
                     <textarea
                     style={{backgroundColor: noteColor}} 
                     maxLength='2000' 
                     className='note-input-body'
+                    placeholder='Note Body'
                     value={this.state.bodyValue}
                     onChange={this.handleChangeBody}></textarea>
                     <ModalButtons 
