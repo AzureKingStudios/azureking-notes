@@ -3,26 +3,6 @@ import {getNoteColor} from '../utils/noteUtils';
 
 class Note extends Component {
 
-    // getNoteColor = (noteColor) => {
-    //     let color ='';
-
-    //     switch(noteColor) {
-    //         case 'red':
-    //             color = '#F5535E';
-    //             break;
-    //         case 'blue':
-    //             color = '#61dafb';
-    //             break;
-    //         case 'yellow':
-    //             color = '#ffd000';
-    //             break;
-    //         default: 
-    //             color = 'white';
-    //     }
-
-    //     return color;
-    // }
-
     render() {
         const note = this.props.note;
         let noteColor = getNoteColor(note.color);

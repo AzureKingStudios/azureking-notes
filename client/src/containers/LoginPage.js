@@ -18,13 +18,10 @@ class LoginPage extends Component {
 
   handleSubmit = (event) => {
       event.preventDefault();
-      // this.props.history.push(`/user/me`);
-      console.log(this.state.email + "/" + this.state.password);
       axios.post('/api/users/login', {
         email: this.state.email,
         password: this.state.password
       }).then((res) => {
-          console.log(res.data.token);
           localStorage.setItem('aks-tk', res.data.token);
           this.setState({
             email: '',

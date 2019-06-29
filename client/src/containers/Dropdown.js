@@ -7,7 +7,6 @@ class Dropdown extends Component {
     }
 
     handleClick = (color) => {
-        console.log('color btn clicked');
         this.props.changeColor(color);
         this.toggleMenu();
     }

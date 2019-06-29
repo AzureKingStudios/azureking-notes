@@ -4,7 +4,6 @@ import axios from 'axios';
 class Header extends Component {
     
     handleLogout = () => {
-        console.log('everything deleted');
         let axiosConfig = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('aks-tk')
@@ -48,13 +47,6 @@ class Header extends Component {
               <img className='sign-in-img' src='/img/user1.png' alt='user icon'/>
             </button>
           </div>
-        {/* {!localStorage.getItem('aks-tk')
-        && (
-          <button className='header-button' onClick={this.loginClick}>Sign In</button>
-        )
-
-        } */}
-        
       </header>
     )
   }

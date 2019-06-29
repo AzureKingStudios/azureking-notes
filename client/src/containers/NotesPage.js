@@ -27,8 +27,6 @@ class NotesPage extends Component {
 
     getNotes = () => {
         if(!localStorage.getItem('aks-tk')) {
-            console.log('notes mounted')
-            // this.props.history.push(`/users/login`);
             const localNotes = JSON.parse(localStorage.getItem('notes'));
             this.setState({notes: localNotes ? localNotes : []}, function() {
                 console.log('not signed in', this.state.notes);
@@ -44,9 +42,7 @@ class NotesPage extends Component {
         }
 
         axios.get('/api/notes',axiosConfig).then((res) => {
-            console.log(this.state.notes);
             this.setState({notes: res.data});
-            console.log(this.state.notes);
         }).catch((e) => {
             console.log(e);
         });
@@ -60,11 +56,9 @@ class NotesPage extends Component {
     
     loaderOff = () => {
         this.setState({loaderIsVisible: false});
-        console.log('loader off');
     }
 
     loaderOn = () => {
-        console.log('loader on');
         this.setState({loaderIsVisible: true});
     }
 

@@ -32,14 +32,11 @@ class ProfilePage extends Component {
             this.props.history.push(`/users/login`);
             return;
         }
-        console.log(localStorage.getItem('aks-tk'));
         let axiosConfig = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('aks-tk')
             }
         }
-        // let AuthStr = 'Bearer '.concat(localStorage.getItem('aks-tk'));
-        // console.log(axiosConfig.headers)
         axios.get('/api/users/me', axiosConfig).then((res) => {
             console.log(res.data);
             this.setState({user: res.data});
@@ -53,14 +50,9 @@ class ProfilePage extends Component {
         })
     }
 
-    componentWillUnmount() {
-        console.log(('component unMounted'));
-    }
-    
     render() {
         
         if(typeof this.state.user.userName === 'undefined') {
-            console.log('state called');
 
             return(
                 <div>

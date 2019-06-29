@@ -19,13 +19,10 @@ class NoteModal extends Component {
     }
 
     changeColor = (newColor) => {
-        this.setState({color: newColor}, () => {
-            console.log(this.state.color);
-        })
+        this.setState({color: newColor});
     }
     
     handleClick = (event) => {
-        // console.log(event.target.className);
         if(event.target.className === 'note-modal') {
             this.props.modalSwitch();
         }

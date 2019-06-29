@@ -5,11 +5,6 @@ import Dropdown from './Dropdown';
 class ModalButtons extends Component {
 
     render() {
-        // const noteValue = {
-        //     title: this.props.titleValue,
-        //     body: this.props.bodyValue,
-        //     color: 'blue'
-        // }
         return(
     <div className='modal-btn-container'>
         {Object.keys(this.props.currentNote).length >= 1 && 
