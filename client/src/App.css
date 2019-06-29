@@ -154,6 +154,7 @@ body {
   padding: 10px;
   border-radius: 15px;
   height: calc(100% - 20px);
+  border: 2px solid #DCDCDC;
 }
 
 .note-input-body {
@@ -166,12 +167,12 @@ body {
 }
 
 .note-input-title, .note-input-body {
-  padding: 0px;
   text-align: left;
   width: calc(100% - 20px);
   border-radius: 15px;
   padding: 5px;
   font-size: 20px;
+  border: none;
 }
 
 @media screen and (min-width: 900px) {
@@ -195,23 +196,57 @@ body {
 
 .modal-btn {
   float: right;
-  border: 2px solid green;
-  color: green;
-  background-color: white;
+  border: 2px solid white;
+  color: white;
+  background-color: #32CD32;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   margin-left: 5px;
 }
 
+.cancel-btn {
+  background-color: #778899;
+}
+
 .delete-btn {
   float: left;
   border-radius: 5px;
-  border: 2px solid red;
-  color: red;
-  background-color: white;
+  border: 2px solid white;
+  color: white;
+  background-color: #F5535E;
   font-size: 16px;
   cursor: pointer;
+}
+
+/* ============================== Dropdown ============================= */
+
+.dropdown-container {
+  position: relative;
+  float: right;
+  /* width: 200px; */
+  margin: 0px;
+}
+
+.color-dropdown {
+  background: rgb(30,253,29);
+  background: linear-gradient(299deg, #ffd000 25%, #00bfff 50%, #F5535E 75%);
+}
+
+.color-swatches {
+  position: absolute;
+  right: 0px;
+  bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+}
+
+.color-btn {
+  border-radius: 10px;
+  border: 3px solid #5c5c5c;
+  width: 48px;
+  height: 36px;
 }
 
 /* ======================== Single Note ========================= */
@@ -269,27 +304,3 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* ============================== Dropdown ============================= */
-
-.dropdown-container {
-  position: relative;
-  float: right;
-  /* width: 200px; */
-  margin: 0px;
-}
-
-.color-swatches {
-  position: absolute;
-  right: 0px;
-  bottom: 32px;
-  display: flex;
-  flex-wrap: wrap;
-  width: 200px;
-}
-
-.color-btn {
-  border-radius: 10px;
-  border: 3px solid black;
-  width: 48px;
-  height: 36px;
-}

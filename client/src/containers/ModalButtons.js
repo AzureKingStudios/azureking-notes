@@ -17,7 +17,7 @@ class ModalButtons extends Component {
         }
         <Dropdown changeColor={this.props.changeColor}/>
         <button className='modal-btn' onClick={() => handleSave(this.props.noteValue, this.props)}>Save</button>
-        <button className='modal-btn' onClick={this.props.modalSwitch}>Cancel</button>
+        <button className='modal-btn cancel-btn' onClick={this.props.modalSwitch}>Cancel</button>
     </div>
         )
     }

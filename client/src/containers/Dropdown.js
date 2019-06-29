@@ -21,7 +21,7 @@ class Dropdown extends Component {
     render(){
         return(
             <div className="dropdown-container">
-                <button className='modal-btn' onClick={this.toggleMenu}>Color</button>
+                <button className='modal-btn color-dropdown' onClick={this.toggleMenu}>Color</button>
                 {this.state.menuIsShown && 
                 <div className='color-swatches'>
                     <button className='color-btn' style={{backgroundColor: "white"}} onClick={() => this.handleClick('white')}></button>
