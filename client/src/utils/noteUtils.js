@@ -41,7 +41,6 @@ function addNote(note, props) {
             noteCount = noteCount+1;
             localStorage.setItem('noteCount', JSON.stringify(noteCount));
             note.id = noteCount;
-            note.color = 'white';
 
             let notes = JSON.parse(localStorage.getItem('notes'));
             notes = notes ? notes : [];
@@ -49,6 +48,7 @@ function addNote(note, props) {
             localStorage.setItem('notes',JSON.stringify(notes));
             props.getNotes();
             props.modalSwitch();
+            props.loaderOff();
             return;
         }
 
@@ -81,6 +81,7 @@ export function deleteNote(props) {
         localStorage.setItem('notes',JSON.stringify(notes));
         props.getNotes();
         props.modalSwitch();
+        props.loaderOff();
         return;
     }
 
@@ -113,9 +114,11 @@ function updateNote(note, props) {
         const id = notes.findIndex(i => i.id === props.currentNote.id);
         notes[id].title = note.title;
         notes[id].body = note.body;
+        notes[id].color = note.color;
         localStorage.setItem('notes',JSON.stringify(notes));
         props.getNotes();
         props.modalSwitch();
+        props.loaderOff();
         return;
     }
 
