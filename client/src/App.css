@@ -307,8 +307,8 @@ body {
 
 .login {
   margin-top: 50px;
-  margin-left: calc(50% - 200px);
-  width: 400px;
+  margin-left: calc(4%);
+  width: 90%;
   height: 275px;
   /* background-color: #00bfff; */
   border: 3px solid #DCDCDC;
@@ -335,4 +335,11 @@ body {
   border: none;
   border-radius: 5px;
   margin: 15px;
+}
+
+@media screen and (min-width: 500px) {
+  .login {
+    margin-left: calc(50% - 200px);
+    width: 350px;
+  }
 }

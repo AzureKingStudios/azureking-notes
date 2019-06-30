@@ -6,7 +6,8 @@ class LoginPage extends Component {
 
   state = {
     email: '',
-    password: ''
+    password: '',
+    isLogin: true
   }
 
   handleChangeEmail = (event) => {
@@ -17,6 +18,7 @@ class LoginPage extends Component {
   }
 
   handleSubmit = (event) => {
+      const apiPath = this.state.isLogin ? '/api/users/login' : '/api/users/signup';
       event.preventDefault();
       axios.post('/api/users/login', {
         email: this.state.email,

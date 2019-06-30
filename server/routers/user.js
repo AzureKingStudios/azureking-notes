@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 const router = new express.Router();
 
 //This route is used to sign up new users
-router.post('/api/users', async (req, res) => {
+router.post('/api/users/signup', async (req, res) => {
     const user = new User(req.body);
 
     try {
