@@ -228,21 +228,21 @@ body {
   margin: 0px;
 }
 
-.color-dropdown {
+.color-btn {
   background: rgb(30,253,29);
   background: linear-gradient(299deg, #ffd000 25%, #00bfff 50%, #F5535E 75%);
 }
 
-.color-swatches {
+.colors-container {
   position: absolute;
-  right: 0px;
+  right: -10px;
   bottom: 32px;
   display: flex;
   flex-wrap: wrap;
-  width: 200px;
+  width: 300px;
 }
 
-.color-btn {
+.color-swatch {
   border-radius: 10px;
   border: 3px solid #5c5c5c;
   width: 48px;

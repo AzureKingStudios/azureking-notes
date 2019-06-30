@@ -153,6 +153,12 @@ function updateNote(note, props) {
         case 'yellow':
             color = '#ffd000';
             break;
+        case 'green':
+            color = '#00996e';
+            break;
+        case 'purple':
+            color = '#9f79ee';
+            break;
         default: 
             color = 'white';
     }
