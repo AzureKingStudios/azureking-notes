@@ -45,6 +45,10 @@ class NotesPage extends Component {
             this.setState({notes: res.data});
         }).catch((e) => {
             console.log(e);
+            if(e.response.status === 401) {
+                localStorage.removeItem('aks-tk');
+                this.props.history.push(`/users/login`);
+            }
         });
     }
 
