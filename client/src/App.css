@@ -45,7 +45,7 @@ body {
 }
 
 .header-title {
-  margin-top: 13px;
+  margin-top: 18px;
   font-size: 20px;
   color: #5c5c5c;
   float: left;
@@ -91,11 +91,10 @@ body {
 @media screen and (min-width: 900px) {
   .header-title {
     font-size: 32px;
-    margin-top: 5px;
+    margin-top: 10px;
   }
   
   .header-logo {
-    
     margin: 5px 20px 0px 30px;
   }
 }

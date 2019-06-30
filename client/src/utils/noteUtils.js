@@ -151,10 +151,10 @@ function updateNote(note, props) {
             color = '#61dafb';
             break;
         case 'yellow':
-            color = '#ffd000';
+            color = '#ffde4c';
             break;
         case 'green':
-            color = '#00996e';
+            color = '#90EE90';
             break;
         case 'purple':
             color = '#9f79ee';
