@@ -21,7 +21,6 @@ export function handleSave(noteValue, props) {
     }
     
     if(Object.keys(props.currentNote).length >= 1){
-        console.log('new note being updated')
         updateNote(note, props);
         return;
     }
