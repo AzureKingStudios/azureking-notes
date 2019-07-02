@@ -40,6 +40,8 @@ class LoginPage extends Component {
           console.log(e);
           if(this.state.isLogin) {
             alert('wrong email or password');
+          } else {
+            alert('email is already registered');
           }
       });
   }

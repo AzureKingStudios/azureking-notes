@@ -4,21 +4,15 @@ const jwt = require('jsonwebtoken');
 const Note = require('./note');
 
 const userSchema = new mongoose.Schema({
-    userName: {
-        unique: true,
-        type: String,
-        required: false,
-        trim: true
-    },
     email: {
         type: String,
         required: true, 
-        unique: true,
         trim: true,
         lowercase: true
     },
     password: {
         type: String,
+        required: true,
         minlength: 7,
         trim: true
     },
@@ -31,6 +25,8 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+
+userSchema.index({ email: 1 }, { unique: true});
 
 userSchema.methods.toJSON = function() {
     const user = this;
