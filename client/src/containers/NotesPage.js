@@ -71,6 +71,12 @@ class NotesPage extends Component {
         return(
             <div>
                 <Header {...this.props}/>
+                {!localStorage.getItem('aks-tk') && 
+                    <h3 className='signin-notice'>Sign in to access notes from other devices</h3>
+                    }
+                {this.state.notes.length < 1 && 
+                    <h2 className='empty-notes'>No notes yet, click the New Note button to create some notes</h2>    
+                    }    
                 <ul className='notes-grid'>
                     {notes.map((note) => (
                     <Note setCurrentNote={this.setCurrentNote} key={note._id} note={note}/>
