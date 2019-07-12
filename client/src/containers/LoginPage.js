@@ -7,14 +7,20 @@ class LoginPage extends Component {
   state = {
     email: '',
     password: '',
+    confirmPassword: '',
     isLogin: true
   }
 
   handleChangeEmail = (event) => {
       this.setState({email: event.target.value});
   }
+
   handleChangePassword = (event) => {
       this.setState({password: event.target.value});
+  }
+
+  handleChangeConfirmPassword = (event) => {
+      this.setState({confirmPassword: event.target.value});
   }
 
   loginToggle = () => {
@@ -25,6 +31,14 @@ class LoginPage extends Component {
 
   handleSubmit = (event) => {
       event.preventDefault();
+
+      const passwordMatch = this.state.password === this.state.confirmPassword; 
+
+      if(!this.state.isLogin && !passwordMatch) {
+        alert('passwords don\'t match');
+        return;
+      }
+
       const apiPath = this.state.isLogin ? '/api/users/login' : '/api/users/signup';
       axios.post(apiPath, {
         email: this.state.email,
@@ -63,6 +77,9 @@ class LoginPage extends Component {
           <h3 className='login-title'>{loginTitle}</h3>
           <input placeholder='email' className='login-input' type="text" value={this.state.email} onChange={this.handleChangeEmail} required />
           <input placeholder='password' className='login-input' type="password" value={this.state.password} onChange={this.handleChangePassword} required />
+          {!this.state.isLogin && 
+            <input placeholder='confirm password' className='login-input' type="password" value={this.state.confirmPassword} onChange={this.handleChangeConfirmPassword} required />
+          }
           <input className='login-btn' type="submit" value={loginButton} />
           <p onClick={this.loginToggle} className='login-signup'>{loginSwitcher}</p>
         </form>
