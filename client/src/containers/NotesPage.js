@@ -28,9 +28,7 @@ class NotesPage extends Component {
     getNotes = () => {
         if(!localStorage.getItem('aks-tk')) {
             const localNotes = JSON.parse(localStorage.getItem('notes'));
-            this.setState({notes: localNotes ? localNotes : []}, function() {
-                console.log('not signed in', this.state.notes);
-            });
+            this.setState({notes: localNotes ? localNotes : []});
 
             return;
         }

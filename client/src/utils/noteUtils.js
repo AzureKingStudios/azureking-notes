@@ -39,7 +39,7 @@ function addNote(note, props) {
             let noteCount = JSON.parse(localStorage.getItem('noteCount'));
             noteCount = noteCount+1;
             localStorage.setItem('noteCount', JSON.stringify(noteCount));
-            note.id = noteCount;
+            note._id = noteCount;
 
             let notes = JSON.parse(localStorage.getItem('notes'));
             notes = notes ? notes : [];
@@ -75,8 +75,8 @@ export function deleteNote(props) {
 
     if(!localStorage.getItem('aks-tk')) {
         let notes = JSON.parse(localStorage.getItem('notes'));
-        const id = notes.findIndex(i => i.id === props.currentNote.id);
-        notes.splice(id,1);
+        const _id = notes.findIndex(i => i._id === props.currentNote._id);
+        notes.splice(_id,1);
         localStorage.setItem('notes',JSON.stringify(notes));
         props.getNotes();
         props.modalSwitch();
@@ -110,10 +110,10 @@ function updateNote(note, props) {
 
     if(!localStorage.getItem('aks-tk')) {
         let notes = JSON.parse(localStorage.getItem('notes'));
-        const id = notes.findIndex(i => i.id === props.currentNote.id);
-        notes[id].title = note.title;
-        notes[id].body = note.body;
-        notes[id].color = note.color;
+        const _id = notes.findIndex(i => i._id === props.currentNote._id);
+        notes[_id].title = note.title;
+        notes[_id].body = note.body;
+        notes[_id].color = note.color;
         localStorage.setItem('notes',JSON.stringify(notes));
         props.getNotes();
         props.modalSwitch();
