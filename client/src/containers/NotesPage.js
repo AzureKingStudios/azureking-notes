@@ -64,6 +64,14 @@ class NotesPage extends Component {
         this.setState({loaderIsVisible: true});
     }
 
+    showSnackbar = () => {
+        let snackbar = document.getElementById("snackbar");
+        snackbar.className = "show";
+        setTimeout(function(){
+            snackbar.className = snackbar.className.replace("show", "");
+        },3000);
+    }
+
     render() {
         let notes = this.state.notes;
         return(
@@ -93,6 +101,8 @@ class NotesPage extends Component {
                 {this.state.loaderIsVisible &&
                     <Loader/>
                 }
+                <div id='snackbar'> snackbar toast msg</div>
+                <button onClick={() => this.showSnackbar()}>click for snackbar</button>
             </div>
         )
     }
