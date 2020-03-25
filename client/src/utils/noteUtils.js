@@ -1,5 +1,14 @@
 import axios from 'axios';
 
+function showSnackbar(msg) {
+    let snackbar = document.getElementById("snackbar");
+    snackbar.innerHTML = "Note " + msg;
+    snackbar.className = "show";
+    setTimeout(function(){
+        snackbar.className = snackbar.className.replace("show", "");
+    },3000);
+}
+
 export function handleSave(noteValue, props) {
     const note = {
         //ternary prevents trim from being called on an undefined value
@@ -19,13 +28,15 @@ export function handleSave(noteValue, props) {
         props.modalSwitch();
         return;
     }
-    
+    //TODO:recheck if it could fail with same length 
     if(Object.keys(props.currentNote).length >= 1){
         updateNote(note, props);
+        showSnackbar("Saved!");
         return;
     }
 
     addNote(note, props);
+    showSnackbar("Saved!");
 }
 
 function addNote(note, props) {
@@ -81,6 +92,7 @@ export function deleteNote(props) {
         props.getNotes();
         props.modalSwitch();
         props.loaderOff();
+        showSnackbar("Deleted!");
         return;
     }
 
@@ -97,6 +109,7 @@ export function deleteNote(props) {
         props.getNotes();
         props.modalSwitch();
         props.loaderOff();
+        showSnackbar("Deleted!");
     }).catch((e) => {
         console.log(e);
         props.modalSwitch();
