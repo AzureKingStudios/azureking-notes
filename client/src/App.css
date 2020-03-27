@@ -375,17 +375,44 @@ body {
 /* ================= Snackbar =================== */
 
 #snackbar {
+  color: white;
+  font-size: 20px;
   visibility: hidden;
   min-width: 200px;
   margin-left: -125px;
   text-align: center;
   position: fixed;
+  /* TODO: update z-index */
   z-index: 1;
   left: 50%;
   bottom: 30px;
-  background-color: #00bfff;
+  background-color: #778899;
+  border-radius: 5px;
+  border: 3px solid #282c34;
 }
 
 #snackbar.show {
   visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout{
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }
